@@ -1,0 +1,60 @@
+.burgerbutton
+  display: none
+  position: absolute
+  right: 20px
+  top: 20px
+  width: 50px
+  z-index: 999
+  &::after, &::before, div
+    margin: 7px 0px
+    content: ''
+    display: block
+    height: 3px
+    border-radius: 3px
+    background-color: #5002f5
+    transition: all .3s
+
+.burgerbutton_Active
+  &::before
+    transform: translateY(8px) rotate(135deg)
+  &::after
+    transform: translateY(-12px) rotate(-135deg)
+  div
+    transform: scale(0)
+
+.burgermenu
+  position: absolute
+  width: 100%
+  height: 100%
+  left: 0
+  top: 0
+  bottom: 0
+  right: 0
+  display: flex
+  justify-content: center
+  align-items: center
+  flex-direction: column
+  background-color: #fff
+  nav
+    margin-bottom: 50px
+    &:last-child
+      margin-bottom: 0px
+
+.burgernavlist
+  display: flex
+  justify-content: center
+  align-items: center
+  flex-direction: column
+  font-size: 32px
+
+.burgernavitem
+  margin-bottom: 20px
+  overflow: hidden
+  &:last-child
+    margin-bottom: 0px
+
+@media screen and ( max-width: 780px )
+  .burgerbutton
+    display: block
+
+    // background-color: #5002f5

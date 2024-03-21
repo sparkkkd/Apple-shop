@@ -1,0 +1,23 @@
+.header
+  position: relative
+  display: flex
+  justify-content: space-between
+  align-items: center
+
+.navlist
+  display: flex
+
+.navitem
+  margin-right: 15px
+  font-size: 32px
+  &:last-child
+    margin-right: 0px
+
+// Media
+@media screen and ( max-width: 1040px )
+  .navitem
+    font-size: 24px
+
+@media screen and ( max-width: 780px )
+  .navlist
+    display: none
