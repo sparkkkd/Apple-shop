@@ -12,8 +12,32 @@
 .word
   position: relative
   margin-right: 60px
+  &:nth-child(2n)
+    margin-right: 0px
+  &:nth-child(3n)
+    margin-right: 0px
 
 .shadow
   position: absolute
   opacity: .1
   color: #fff
+
+// Media
+@media screen and ( max-width: 800px )
+  .div
+    font-size: 150px
+
+@media screen and ( max-width: 664px )
+  .word
+    margin-right: 20px
+
+  .div
+    font-size: 100px
+
+@media screen and ( max-width: 450px )
+  .div
+    font-size: 80px
+
+@media screen and ( max-width: 370px )
+  .div
+    font-size: 60px

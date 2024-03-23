@@ -8,7 +8,8 @@
   align-items: center
   justify-content: start
   flex-direction: column
-  background-image: url('phone-main.png')
+  background-image: url('Apple-shop/phone-main.png')
+  background-repeat: no-repeat
   h2
     margin-bottom: 20px
     font-size: 36px
@@ -46,3 +47,22 @@
   &:hover
     background-color: #5002f5
     color: #fff
+
+// Media
+@media screen and ( max-width: 800px )
+  .container
+    margin-top: 50px
+
+@media screen and ( max-width: 400px )
+  .container
+    width: auto
+    height: auto
+    padding: 0
+    background-image: none
+    h2
+      font-size: 40px
+
+  .button
+    padding: 7px 0px
+    font-size: 16px
+    border-radius: 8px

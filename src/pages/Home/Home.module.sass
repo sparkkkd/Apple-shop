@@ -1,8 +1,20 @@
 .face
-  display: block
   margin: 0 auto
   margin-bottom: 100px
-  height: 600px
+  display: block
   width: 600px
+  height: 600px
   path
     fill: #fff
+
+// Media
+@media screen and ( max-width: 800px )
+  .face
+    margin-bottom: 50px
+    width: 400px
+    height: 400px
+
+@media screen and ( max-width: 555px )
+  .face
+    width: 300px
+    height: 300px

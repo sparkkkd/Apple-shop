@@ -5,7 +5,7 @@ import App from './App.tsx'
 import './index.sass'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-	<BrowserRouter>
+	<BrowserRouter basename='Apple-shop'>
 		<App />
 	</BrowserRouter>
 )

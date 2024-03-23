@@ -8,7 +8,9 @@ function App() {
 	return (
 		<div className={styles.container}>
 			<Header />
-			<BurgerMenu />
+			<main className={styles.main}>
+				<BurgerMenu />
+			</main>
 
 			<Routes>
 				<Route path='/' element={<Home />} />

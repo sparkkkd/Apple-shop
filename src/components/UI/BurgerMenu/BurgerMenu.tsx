@@ -60,13 +60,13 @@ export default function BurgerMenu({}: BurgerMenuProps) {
 
 		open: {
 			transition: {
-				delayChildren: 0.2,
 				staggerChildren: 0.05,
 			},
 		},
 
 		exit: {
 			transition: {
+				delayChildren: 0.2,
 				staggerChildren: 0.05,
 			},
 		},
