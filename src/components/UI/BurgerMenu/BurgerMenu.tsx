@@ -3,7 +3,7 @@ import styles from './Burger.module.sass'
 import BurgerButton from './BurgerButton'
 import { NAV_AUTH_ITEMS, NAV_ITEMS } from '../../Header/constants'
 import { motion, AnimatePresence, easeInOut, Variants } from 'framer-motion'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 interface BurgerMenuProps {}
 
@@ -71,6 +71,20 @@ export default function BurgerMenu({}: BurgerMenuProps) {
 			},
 		},
 	}
+
+	useEffect(() => {
+		function disableScroll() {
+			if (isVisible) document.body.style.overflow = 'hidden'
+		}
+
+		function enableScroll() {
+			document.body.style.overflow = 'auto'
+		}
+
+		disableScroll()
+
+		return enableScroll
+	}, [isVisible])
 
 	return (
 		<>
