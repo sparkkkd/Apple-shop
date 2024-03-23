@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useRef } from 'react'
+import { useRef } from 'react'
 import styles from './ScrollCharacter.module.sass'
 
 import { useScroll, motion, MotionValue, useTransform } from 'framer-motion'
