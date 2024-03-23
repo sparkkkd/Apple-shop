@@ -1,11 +1,13 @@
 import { Link } from 'react-router-dom'
 import styles from './Burger.module.sass'
 import BurgerButton from './BurgerButton'
-import { NAV_AUTH_ITEMS, NAV_ITEMS } from '../Header/constants'
+import { NAV_AUTH_ITEMS, NAV_ITEMS } from '../../Header/constants'
 import { motion, AnimatePresence, easeInOut, Variants } from 'framer-motion'
 import { useState } from 'react'
 
-export default function BurgerMenu() {
+interface BurgerMenuProps {}
+
+export default function BurgerMenu({}: BurgerMenuProps) {
 	const [isVisible, setIsVisible] = useState<boolean>(false)
 
 	const menuVariants: Variants = {
@@ -91,8 +93,8 @@ export default function BurgerMenu() {
 								className={styles.burgernavlist}
 							>
 								{NAV_ITEMS.map(({ id, text, href }) => (
-									<div className={styles.burgernavitem}>
-										<motion.li variants={linkVariants} key={id}>
+									<div key={id} className={styles.burgernavitem}>
+										<motion.li variants={linkVariants}>
 											<Link style={{ textDecoration: 'none' }} to={href}>
 												{text}
 											</Link>
@@ -110,8 +112,8 @@ export default function BurgerMenu() {
 								className={styles.burgernavlist}
 							>
 								{NAV_AUTH_ITEMS.map(({ id, text, href }) => (
-									<div className={styles.burgernavitem}>
-										<motion.li key={id} variants={linkVariants}>
+									<div key={id} className={styles.burgernavitem}>
+										<motion.li variants={linkVariants}>
 											<Link style={{ textDecoration: 'none' }} to={href}>
 												{text}
 											</Link>

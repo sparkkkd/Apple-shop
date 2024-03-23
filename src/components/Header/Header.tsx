@@ -1,10 +1,10 @@
 import styles from './Header.module.sass'
 
-import NavItem from '../NavItem/NavItem'
+import NavItem from '../UI/NavItem/NavItem'
 
 import { NAV_AUTH_ITEMS, NAV_ITEMS } from './constants'
 
-export interface HeaderProps {}
+interface HeaderProps {}
 
 export default function Header({}: HeaderProps) {
 	return (

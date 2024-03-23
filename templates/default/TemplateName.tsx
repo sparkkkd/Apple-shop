@@ -1,6 +1,6 @@
 import styles from './TemplateName.module.sass'
 
-export interface TemplateNameProps {}
+interface TemplateNameProps {}
 
 export default function TemplateName({}: TemplateNameProps) {
 	return (

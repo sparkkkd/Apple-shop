@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import styles from './NavItem.module.sass'
 
-export interface NavItemProps {
+interface NavItemProps {
 	text: string
 	href: string
 }

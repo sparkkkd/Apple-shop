@@ -1,6 +1,6 @@
 import styles from './Burger.module.sass'
 
-export interface BurgerMenuProps {
+interface BurgerMenuProps {
 	isVisible: boolean
 	setIsVisible: React.Dispatch<React.SetStateAction<boolean>>
 }
