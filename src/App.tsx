@@ -1,8 +1,12 @@
+import { Route, Routes } from 'react-router-dom'
+
 import styles from './App.module.sass'
+
 import BurgerMenu from './components/UI/BurgerMenu/BurgerMenu'
 import Header from './components/Header/Header'
-import { Route, Routes } from 'react-router-dom'
+
 import Home from './pages/Home/Home'
+import Catalog from './pages/Catalog/Catalog'
 
 function App() {
 	return (
@@ -14,6 +18,7 @@ function App() {
 
 			<Routes>
 				<Route path='/' element={<Home />} />
+				<Route path='/catalog' element={<Catalog />} />
 			</Routes>
 		</div>
 	)

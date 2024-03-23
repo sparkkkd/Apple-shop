@@ -108,7 +108,10 @@ export default function BurgerMenu({}: BurgerMenuProps) {
 							>
 								{NAV_ITEMS.map(({ id, text, href }) => (
 									<div key={id} className={styles.burgernavitem}>
-										<motion.li variants={linkVariants}>
+										<motion.li
+											variants={linkVariants}
+											onClick={() => setIsVisible(false)}
+										>
 											<Link style={{ textDecoration: 'none' }} to={href}>
 												{text}
 											</Link>
@@ -127,7 +130,10 @@ export default function BurgerMenu({}: BurgerMenuProps) {
 							>
 								{NAV_AUTH_ITEMS.map(({ id, text, href }) => (
 									<div key={id} className={styles.burgernavitem}>
-										<motion.li variants={linkVariants}>
+										<motion.li
+											variants={linkVariants}
+											onClick={() => setIsVisible(false)}
+										>
 											<Link style={{ textDecoration: 'none' }} to={href}>
 												{text}
 											</Link>
