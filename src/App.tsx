@@ -8,19 +8,27 @@ import Header from './components/Header/Header'
 import Home from './pages/Home/Home'
 import Catalog from './pages/Catalog/Catalog'
 
+import BackgroundImage from './images/bg.gif'
+
 function App() {
 	return (
-		<div className={styles.container}>
-			<Header />
-			<main className={styles.main}>
-				<BurgerMenu />
-			</main>
+		<>
+			<div
+				className={styles.background}
+				style={{ background: `url(${BackgroundImage})` }}
+			></div>
+			<div className={styles.container}>
+				<Header />
+				<main className={styles.main}>
+					<BurgerMenu />
+				</main>
 
-			<Routes>
-				<Route path='/' element={<Home />} />
-				<Route path='/catalog' element={<Catalog />} />
-			</Routes>
-		</div>
+				<Routes>
+					<Route path='/' element={<Home />} />
+					<Route path='/catalog' element={<Catalog />} />
+				</Routes>
+			</div>
+		</>
 	)
 }
 
