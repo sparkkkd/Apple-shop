@@ -15,7 +15,7 @@ function App() {
 		<>
 			<div
 				className={styles.background}
-				style={{ background: `url(${BackgroundImage})` }}
+				style={{ backgroundImage: `url(${BackgroundImage})` }}
 			></div>
 			<div className={styles.container}>
 				<Header />
