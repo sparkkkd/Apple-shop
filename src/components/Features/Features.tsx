@@ -6,11 +6,15 @@ import ContainerImage from '../../images/phone-main.png'
 
 interface FeaturesProps {}
 
+const windowWidth = window.innerWidth
+
 export default function Features({}: FeaturesProps) {
 	return (
 		<div
 			className={styles.container}
-			style={{ backgroundImage: `url(${ContainerImage})` }}
+			style={{
+				backgroundImage: `${windowWidth > 405 && `url(${ContainerImage})`}`,
+			}}
 		>
 			<h2>Why choose us?</h2>
 			<div className={styles.wrapper}>
