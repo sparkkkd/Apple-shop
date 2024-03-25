@@ -9,12 +9,13 @@
   color: #fff
   text-transform: uppercase
   font-weight: 400
-  background-color: red
-  background: linear-gradient(90deg, #0031ad 0%, #2f018f 100%)
+  background-color: transparent
+  border: 1px solid #5002f5
   z-index: 4
-  transition: transform .3s
+  transition: background-color .5s, color .5s
   &:hover
-    transform: scale(.95)
+    background-color: #5002f5
+    color: #fff
 
 // Media
 @media screen and ( max-width: 1045px )

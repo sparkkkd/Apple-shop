@@ -1,4 +1,4 @@
-import styles from './formbutton.module.sass'
+import styles from './authbutton.module.sass'
 
 interface AuthButtonProps {
 	name: string

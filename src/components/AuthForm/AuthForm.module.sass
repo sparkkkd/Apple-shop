@@ -2,21 +2,47 @@
   position: absolute
   left: 50%
   top: 50%
+  width: 920px
   transform: translate(-50%, -50%)
   display: flex
   justify-content: center
   align-items: center
+  border: 1px solid #5002f5
+  border-radius: 20px
 
 .form
   padding: 20px 0px
-  width: 820px
+  width: 100%
   display: flex
   justify-content: center
   align-items: center
   flex-direction: column
-  border-radius: 20px
+
+.img
+  position: absolute
+  left: 25px
+  top: 50%
+  transform: translateY(-50%)
 
 // Media
-@media screen and ( max-width: 1045px )
-  .form
-    width: 600px
+@media screen and ( max-width: 1040px )
+  .container
+    width: 720px
+
+@media screen and ( max-width: 780px )
+  .container
+    width: 520px
+
+  .img
+    width: 100px
+
+@media screen and ( max-width: 545px )
+  .container
+    width: 350px
+
+  .img
+    display: none
+
+@media screen and ( max-width: 360px )
+  .container
+    border: none

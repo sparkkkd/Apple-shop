@@ -10,6 +10,7 @@ import Catalog from './pages/Catalog/Catalog'
 import SignUp from './pages/SignUp/SignUp'
 
 import BackgroundImage from './images/bg.gif'
+import SignIn from './pages/SignIn/SignIn'
 
 function App() {
 	return (
@@ -28,6 +29,7 @@ function App() {
 					<Route path='/' element={<Home />} />
 					<Route path='/catalog' element={<Catalog />} />
 					<Route path='/sign-up' element={<SignUp />} />
+					<Route path='/sign-in' element={<SignIn />} />
 				</Routes>
 			</div>
 		</>

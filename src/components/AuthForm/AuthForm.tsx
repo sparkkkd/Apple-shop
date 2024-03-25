@@ -2,7 +2,8 @@ import { useForm } from 'react-hook-form'
 
 import styles from './AuthForm.module.sass'
 
-import formBg from '../../images/form-bg.jpg'
+import handImg from '../../images/hand.png'
+
 import AuthInput from '../UI/AuthInput/AuthInput'
 import FormButton from '../UI/AuthButton/AuthButton'
 
@@ -37,10 +38,11 @@ export default function AuthForm({ formType }: AuthFormProps) {
 
 	return (
 		<div className={styles.container}>
+			<img className={styles.img} src={handImg} alt='formimg' />
 			<form
 				onSubmit={onSubmit}
 				className={styles.form}
-				style={{ backgroundImage: `url(${formBg})` }}
+				// style={{ backgroundImage: `url(${formBg})` }}
 			>
 				<AuthInput
 					register={register}
