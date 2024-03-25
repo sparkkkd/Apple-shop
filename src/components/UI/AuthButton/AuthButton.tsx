@@ -1,10 +1,10 @@
 import styles from './formbutton.module.sass'
 
-interface FormButtonProps {
+interface AuthButtonProps {
 	name: string
 }
 
-export default function FormButton({ name }: FormButtonProps) {
+export default function AuthButton({ name }: AuthButtonProps) {
 	return (
 		<button className={styles.button} type='submit'>
 			{name}
