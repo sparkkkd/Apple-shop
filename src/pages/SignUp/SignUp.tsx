@@ -26,11 +26,14 @@ export default function SignUp({}: SignUpProps) {
 			password: '',
 			name: '',
 		},
+		mode: 'onChange',
 	})
 
 	const onSubmit = handleSubmit(({ email, name, password }) => {
 		console.log({ email, name, password })
 	})
+
+	console.log(errors)
 
 	return (
 		<div className={styles.signup}>
