@@ -7,6 +7,7 @@ import Header from './components/Header/Header'
 
 import Home from './pages/Home/Home'
 import Catalog from './pages/Catalog/Catalog'
+import SignUp from './pages/SignUp/SignUp'
 
 import BackgroundImage from './images/bg.gif'
 
@@ -26,6 +27,7 @@ function App() {
 				<Routes>
 					<Route path='/' element={<Home />} />
 					<Route path='/catalog' element={<Catalog />} />
+					<Route path='/sign-up' element={<SignUp />} />
 				</Routes>
 			</div>
 		</>
