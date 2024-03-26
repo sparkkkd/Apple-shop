@@ -8,7 +8,7 @@ interface initialStateType {
 	isError: boolean
 	accessToken: string
 	refreshToken: string
-	isAuth: boolean
+	navigateTo: string
 }
 
 const initialState: initialStateType = {
@@ -22,7 +22,7 @@ const initialState: initialStateType = {
 	refreshToken: '',
 	isLoading: false,
 	isError: false,
-	isAuth: false,
+	navigateTo: '',
 }
 
 interface LoginData {
@@ -58,6 +58,14 @@ export const fetchRegister = createAsyncThunk(
 	}
 )
 
+export const fetchLogout = createAsyncThunk('auth/logout', async (_, { rejectWithValue }) => {
+	try {
+		await AuthService.logout()
+	} catch (error) {
+		rejectWithValue(error)
+	}
+})
+
 export const authSlice = createSlice({
 	name: 'auth',
 	initialState,
@@ -72,8 +80,7 @@ export const authSlice = createSlice({
 			if (action.payload?.user) state.userData = action.payload?.user
 			if (action.payload?.accessToken) state.accessToken = action.payload?.accessToken
 			if (action.payload?.refreshToken) state.refreshToken = action.payload.refreshToken
-			state.isAuth = true
-
+			if (action.payload?.navigateTo) state.navigateTo = action.payload.navigateTo
 			localStorage.setItem('token', action.payload?.accessToken as string)
 		})
 		builder.addCase(fetchLogin.rejected, (state, action) => {
@@ -90,12 +97,28 @@ export const authSlice = createSlice({
 			if (action.payload?.user) state.userData = action.payload?.user
 			if (action.payload?.accessToken) state.accessToken = action.payload?.accessToken
 			if (action.payload?.refreshToken) state.refreshToken = action.payload.refreshToken
-			state.isAuth = true
+			if (action.payload?.navigateTo) state.navigateTo = action.payload.navigateTo
 			localStorage.setItem('token', action.payload?.accessToken as string)
 		})
 		builder.addCase(fetchRegister.rejected, (state, action) => {
 			state.isLoading = false
 			state.isError = true
+			console.log(action.error.message)
+		})
+		// Logout
+		builder.addCase(fetchLogout.pending, (state) => {
+			state.isLoading = true
+		})
+		builder.addCase(fetchLogout.fulfilled, (state) => {
+			state.isLoading = false
+			state.accessToken = ''
+			state.refreshToken = ''
+			state.navigateTo = ''
+			state.userData = {} as IUser
+		})
+		builder.addCase(fetchLogout.rejected, (state, action) => {
+			state.isError = true
+			state.isLoading = false
 			console.log(action.error.message)
 		})
 	},

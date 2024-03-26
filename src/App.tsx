@@ -11,6 +11,7 @@ import SignUp from './pages/SignUp/SignUp'
 
 import BackgroundImage from './images/bg.gif'
 import SignIn from './pages/SignIn/SignIn'
+import ThanksRegister from './pages/ThanksRegister/ThanksRegister'
 
 function App() {
 	return (
@@ -30,6 +31,7 @@ function App() {
 					<Route path='/catalog' element={<Catalog />} />
 					<Route path='/sign-up' element={<SignUp />} />
 					<Route path='/sign-in' element={<SignIn />} />
+					<Route path='/thanks' element={<ThanksRegister />} />
 				</Routes>
 			</div>
 		</>

@@ -23,7 +23,7 @@ interface AuthFormProps {
 
 export default function AuthForm({ formType }: AuthFormProps) {
 	const dispatch = useAppDispatch()
-	const { isAuth } = useAppSelector((state) => state.authSlice)
+	const { navigateTo } = useAppSelector((state) => state.authSlice)
 
 	const {
 		register,
@@ -63,8 +63,8 @@ export default function AuthForm({ formType }: AuthFormProps) {
 		}
 	})
 
-	if (isAuth) {
-		return <Navigate to='/' />
+	if (navigateTo) {
+		return <Navigate to={navigateTo} />
 	}
 
 	return (
