@@ -4,11 +4,15 @@ import BurgerButton from './BurgerButton'
 import { NAV_AUTH_ITEMS, NAV_ITEMS } from '../../Header/constants'
 import { motion, AnimatePresence, easeInOut, Variants } from 'framer-motion'
 import { useEffect, useState } from 'react'
+import { useAppDispatch, useAppSelector } from '../../../hooks/redux'
+import { fetchLogout } from '../../../store/slices/authSlice'
 
 interface BurgerMenuProps {}
 
 export default function BurgerMenu({}: BurgerMenuProps) {
 	const [isVisible, setIsVisible] = useState<boolean>(false)
+	const { name } = useAppSelector((state) => state.authSlice.userData)
+	const dispatch = useAppDispatch()
 
 	const menuVariants: Variants = {
 		initial: {
@@ -108,10 +112,7 @@ export default function BurgerMenu({}: BurgerMenuProps) {
 							>
 								{NAV_ITEMS.map(({ id, text, href }) => (
 									<div key={id} className={styles.burgernavitem}>
-										<motion.li
-											variants={linkVariants}
-											onClick={() => setIsVisible(false)}
-										>
+										<motion.li variants={linkVariants} onClick={() => setIsVisible(false)}>
 											<Link style={{ textDecoration: 'none' }} to={href}>
 												{text}
 											</Link>
@@ -128,18 +129,30 @@ export default function BurgerMenu({}: BurgerMenuProps) {
 								exit='initial'
 								className={styles.burgernavlist}
 							>
-								{NAV_AUTH_ITEMS.map(({ id, text, href }) => (
-									<div key={id} className={styles.burgernavitem}>
-										<motion.li
-											variants={linkVariants}
-											onClick={() => setIsVisible(false)}
-										>
-											<Link style={{ textDecoration: 'none' }} to={href}>
-												{text}
-											</Link>
+								{name ? (
+									<div className={styles.burgernavitem}>
+										<motion.li variants={linkVariants} onClick={() => setIsVisible(false)}>
+											<div
+												className={styles.authItem}
+												onClick={() => {
+													dispatch(fetchLogout())
+												}}
+											>
+												Log out
+											</div>
 										</motion.li>
 									</div>
-								))}
+								) : (
+									NAV_AUTH_ITEMS.map(({ id, text, href }) => (
+										<div key={id} className={styles.burgernavitem}>
+											<motion.li variants={linkVariants} onClick={() => setIsVisible(false)}>
+												<Link style={{ textDecoration: 'none' }} to={href}>
+													{text}
+												</Link>
+											</motion.li>
+										</div>
+									))
+								)}
 							</motion.ul>
 						</nav>
 					</motion.div>

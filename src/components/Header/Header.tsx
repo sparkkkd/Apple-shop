@@ -23,19 +23,19 @@ export default function Header({}: HeaderProps) {
 				</ul>
 			</nav>
 
-			<nav className={styles.navauth}>
-				<ul className={styles.navlist}>
-					{name ? (
-						<UserHeader name={name} />
-					) : (
-						NAV_AUTH_ITEMS.map(({ id, text, href }) => (
+			{name ? (
+				<UserHeader name={name} />
+			) : (
+				<nav className={styles.navauth}>
+					<ul className={styles.navlist}>
+						{NAV_AUTH_ITEMS.map(({ id, text, href }) => (
 							<li className={styles.navitem} key={id}>
 								<NavItem text={text} href={href} />
 							</li>
-						))
-					)}
-				</ul>
-			</nav>
+						))}
+					</ul>
+				</nav>
+			)}
 		</header>
 	)
 }
