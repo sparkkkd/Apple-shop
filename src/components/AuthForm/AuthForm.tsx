@@ -5,7 +5,11 @@ import styles from './AuthForm.module.sass'
 import handImg from '../../images/hand.png'
 
 import AuthInput from '../UI/AuthInput/AuthInput'
-import FormButton from '../UI/AuthButton/AuthButton'
+import AuthButton from '../UI/AuthButton/AuthButton'
+
+import { useAppDispatch, useAppSelector } from '../../hooks/redux'
+import { fetchLogin, fetchRegister } from '../../store/slices/authSlice'
+import { Navigate } from 'react-router-dom'
 
 interface FormData {
 	email: string
@@ -18,11 +22,17 @@ interface AuthFormProps {
 }
 
 export default function AuthForm({ formType }: AuthFormProps) {
+	const dispatch = useAppDispatch()
+	const { isAuth } = useAppSelector((state) => state.authSlice)
+
 	const {
 		register,
 		handleSubmit,
-		setError,
-		formState: { errors, isValid },
+		// setError,
+		formState: {
+			errors,
+			// isValid
+		},
 	} = useForm<FormData>({
 		defaultValues: {
 			email: '',
@@ -33,8 +43,29 @@ export default function AuthForm({ formType }: AuthFormProps) {
 	})
 
 	const onSubmit = handleSubmit(({ email, name, password }) => {
-		console.log({ email, name, password })
+		if (formType === 'signin') {
+			console.log({ email, name, password })
+			const formData = {
+				email,
+				password,
+			}
+			dispatch(fetchLogin(formData))
+		}
+		if (formType === 'signup') {
+			const formData = {
+				email,
+				password,
+				name,
+			}
+			console.log(formData)
+
+			dispatch(fetchRegister(formData))
+		}
 	})
+
+	if (isAuth) {
+		return <Navigate to='/' />
+	}
 
 	return (
 		<div className={styles.container}>
@@ -71,7 +102,7 @@ export default function AuthForm({ formType }: AuthFormProps) {
 					isError={Boolean(errors.password?.message)}
 					errorText={errors.password?.message}
 				/>
-				<FormButton name='Sign up' />
+				<AuthButton>{formType === 'signin' ? 'Sign in' : 'Sign up'}</AuthButton>
 			</form>
 		</div>
 	)

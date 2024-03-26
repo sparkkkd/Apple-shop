@@ -1,13 +1,14 @@
+import { ReactNode } from 'react'
 import styles from './authbutton.module.sass'
 
 interface AuthButtonProps {
-	name: string
+	children: ReactNode
 }
 
-export default function AuthButton({ name }: AuthButtonProps) {
+export default function AuthButton({ children }: AuthButtonProps) {
 	return (
 		<button className={styles.button} type='submit'>
-			{name}
+			{children}
 		</button>
 	)
 }

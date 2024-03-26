@@ -6,6 +6,9 @@ interface initialStateType {
 	userData: IUser
 	isLoading: boolean
 	isError: boolean
+	accessToken: string
+	refreshToken: string
+	isAuth: boolean
 }
 
 const initialState: initialStateType = {
@@ -15,8 +18,11 @@ const initialState: initialStateType = {
 		isActivated: false,
 		id: '',
 	},
+	accessToken: '',
+	refreshToken: '',
 	isLoading: false,
 	isError: false,
+	isAuth: false,
 }
 
 interface LoginData {
@@ -24,12 +30,31 @@ interface LoginData {
 	password: string
 }
 
-export const login = createAsyncThunk(
+interface RegisterData extends LoginData {
+	name: string
+}
+
+export const fetchLogin = createAsyncThunk(
 	'auth/login',
 	async (data: LoginData, { rejectWithValue }) => {
-		const response = await AuthService.login(data.email, data.password)
-		console.log(response)
-		return response
+		try {
+			const response = await AuthService.login(data.email, data.password)
+			return response.data
+		} catch (error) {
+			rejectWithValue(error)
+		}
+	}
+)
+
+export const fetchRegister = createAsyncThunk(
+	'auth/register',
+	async (data: RegisterData, { rejectWithValue }) => {
+		try {
+			const response = await AuthService.register(data.email, data.password, data.name)
+			return response.data
+		} catch (error) {
+			rejectWithValue(error)
+		}
 	}
 )
 
@@ -38,12 +63,40 @@ export const authSlice = createSlice({
 	initialState,
 	reducers: {},
 	extraReducers: (builder) => {
-		// login
-		builder.addCase(login.pending, (state, action) => {
+		// Login
+		builder.addCase(fetchLogin.pending, (state) => {
 			state.isLoading = true
 		})
-		builder.addCase(login.fulfilled, (state, action) => {
-			// state.userData = action.payload // Здесь ошибка
+		builder.addCase(fetchLogin.fulfilled, (state, action) => {
+			console.log(action.payload)
+			if (action.payload?.user) state.userData = action.payload?.user
+			if (action.payload?.accessToken) state.accessToken = action.payload?.accessToken
+			if (action.payload?.refreshToken) state.refreshToken = action.payload.refreshToken
+			state.isAuth = true
+
+			localStorage.setItem('token', action.payload?.accessToken as string)
+		})
+		builder.addCase(fetchLogin.rejected, (state, action) => {
+			state.isLoading = false
+			state.isError = true
+			console.log(action.error.message)
+		})
+		// Register
+		builder.addCase(fetchRegister.pending, (state) => {
+			state.isLoading = true
+		})
+		builder.addCase(fetchRegister.fulfilled, (state, action) => {
+			console.log(action.payload)
+			if (action.payload?.user) state.userData = action.payload?.user
+			if (action.payload?.accessToken) state.accessToken = action.payload?.accessToken
+			if (action.payload?.refreshToken) state.refreshToken = action.payload.refreshToken
+			state.isAuth = true
+			localStorage.setItem('token', action.payload?.accessToken as string)
+		})
+		builder.addCase(fetchRegister.rejected, (state, action) => {
+			state.isLoading = false
+			state.isError = true
+			console.log(action.error.message)
 		})
 	},
 })
