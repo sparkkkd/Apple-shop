@@ -1,6 +1,8 @@
 .container
   max-width: 1240px
+  height: 100%
   min-height: 100vh
+  // min-height: 100vh
   padding: 20px
   margin: 0 auto
   border-left: 1px dashed rgba(255, 255, 255, .1)
@@ -20,3 +22,8 @@
   opacity: .15
   z-index: -1
   background-attachment: fixed
+
+// Media
+@media screen and ( max-width: 400px )
+  .container
+    padding: 20px 0px

@@ -44,7 +44,7 @@ function App() {
 			<BurgerMenu />
 
 			<div className={styles.container}>
-				{isLoading ? (
+				{/* {isLoading ? (
 					<SpinnerLoading />
 				) : (
 					<>
@@ -62,7 +62,23 @@ function App() {
 							</Routes>
 						</AnimatePresence>
 					</>
-				)}
+				)} */}
+
+				<>
+					<Header />
+
+					<AnimatePresence mode='wait'>
+						<Routes location={location} key={location.pathname}>
+							<Route index element={<Home />} />
+							<Route path='/catalog' element={<Catalog />} />
+							<Route path='/sign-up' element={<SignUp />} />
+							<Route path='/sign-in' element={<SignIn />} />
+							<Route path='/cart' element={<Cart />} />
+							<Route path='/contacts' element={<Contacts />} />
+							<Route path='/thanks' element={<ThanksRegister />} />
+						</Routes>
+					</AnimatePresence>
+				</>
 			</div>
 		</>
 	)

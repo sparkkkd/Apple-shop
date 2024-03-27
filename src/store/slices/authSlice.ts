@@ -5,6 +5,7 @@ import axios from 'axios'
 import { AuthResponse } from '../../models/response/AuthResponse'
 import { API_URL } from '../../http'
 
+const AUTH_FAIL: string = 'Неверное имя пользователя или пароль'
 interface initialStateType {
 	userData: IUser
 	isLoading: boolean
@@ -12,6 +13,7 @@ interface initialStateType {
 	accessToken: string
 	refreshToken: string
 	navigateTo: string
+	errorMessage: string
 }
 
 const initialState: initialStateType = {
@@ -26,6 +28,7 @@ const initialState: initialStateType = {
 	isLoading: false,
 	isError: false,
 	navigateTo: '',
+	errorMessage: '',
 }
 
 interface LoginData {
@@ -92,7 +95,6 @@ export const authSlice = createSlice({
 			state.isLoading = true
 		})
 		builder.addCase(fetchLogin.fulfilled, (state, action) => {
-			console.log(action.payload)
 			if (action.payload?.user) state.userData = action.payload?.user
 			if (action.payload?.accessToken) state.accessToken = action.payload?.accessToken
 			if (action.payload?.refreshToken) state.refreshToken = action.payload.refreshToken
@@ -103,6 +105,7 @@ export const authSlice = createSlice({
 		builder.addCase(fetchLogin.rejected, (state, action) => {
 			state.isLoading = false
 			state.isError = true
+			state.errorMessage = AUTH_FAIL
 			console.log(action.error.message)
 		})
 		// Register
@@ -111,6 +114,7 @@ export const authSlice = createSlice({
 		})
 		builder.addCase(fetchRegister.fulfilled, (state, action) => {
 			console.log(action.payload)
+			state.isLoading = false
 			if (action.payload?.user) state.userData = action.payload?.user
 			if (action.payload?.accessToken) state.accessToken = action.payload?.accessToken
 			if (action.payload?.refreshToken) state.refreshToken = action.payload.refreshToken
@@ -156,6 +160,7 @@ export const authSlice = createSlice({
 		})
 		builder.addCase(fetchCheckAuth.rejected, (state, action) => {
 			state.isError = true
+			state.isLoading = false
 			console.log(action.error.message)
 		})
 	},
