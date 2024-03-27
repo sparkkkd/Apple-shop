@@ -1,23 +1,28 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 interface initialStateType {
-	isVisible: boolean
+	userMenuIsVisible: boolean
+	menuIsVisible: boolean
 }
 
 const initialState: initialStateType = {
-	isVisible: false,
+	userMenuIsVisible: false,
+	menuIsVisible: false,
 }
 
 const userMenuSlice = createSlice({
 	name: 'usermenu',
 	initialState,
 	reducers: {
+		toggleUserMenu: (state) => {
+			state.userMenuIsVisible = !state.userMenuIsVisible
+		},
 		toggleMenu: (state) => {
-			state.isVisible = !state.isVisible
+			state.menuIsVisible = !state.menuIsVisible
 		},
 	},
 })
 
 export default userMenuSlice.reducer
 
-export const { toggleMenu } = userMenuSlice.actions
+export const { toggleUserMenu, toggleMenu } = userMenuSlice.actions

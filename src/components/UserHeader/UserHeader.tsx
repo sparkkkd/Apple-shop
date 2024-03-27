@@ -1,16 +1,17 @@
 import { FaAngleDown } from 'react-icons/fa6'
 
 import styles from './UserHeader.module.sass'
-import UserMenu from '../../UserMenu/UserMenu'
-import { useAppDispatch, useAppSelector } from '../../../hooks/redux'
-import { toggleMenu } from '../../../store/slices/userMenuSlice'
+import UserMenu from '../UserMenu/UserMenu'
+
+import { useAppDispatch, useAppSelector } from '../../hooks/redux'
+import { toggleUserMenu } from '../../store/slices/userMenuSlice'
 
 interface UserHeaderProps {
 	name: string
 }
 
 export default function UserHeader({ name }: UserHeaderProps) {
-	const { isVisible } = useAppSelector((state) => state.userMenuSlice)
+	const { userMenuIsVisible } = useAppSelector((state) => state.userMenuSlice)
 	const dispatch = useAppDispatch()
 
 	return (
@@ -18,9 +19,9 @@ export default function UserHeader({ name }: UserHeaderProps) {
 			<div className={styles.userContainer}>
 				<FaAngleDown
 					className={styles.arrow}
-					style={{ transform: `${isVisible ? 'rotateX(180deg)' : 'rotateX(0deg)'}` }}
+					style={{ transform: `${userMenuIsVisible ? 'rotateX(180deg)' : 'rotateX(0deg)'}` }}
 					onClick={() => {
-						dispatch(toggleMenu())
+						dispatch(toggleUserMenu())
 					}}
 				/>
 				<div className={styles.username}>{name}</div>

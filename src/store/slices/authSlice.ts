@@ -1,6 +1,9 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { IUser } from '../../models/IUser'
 import AuthService from '../../services/AuthService'
+import axios from 'axios'
+import { AuthResponse } from '../../models/response/AuthResponse'
+import { API_URL } from '../../http'
 
 interface initialStateType {
 	userData: IUser
@@ -34,6 +37,7 @@ interface RegisterData extends LoginData {
 	name: string
 }
 
+// Fetch Login
 export const fetchLogin = createAsyncThunk(
 	'auth/login',
 	async (data: LoginData, { rejectWithValue }) => {
@@ -46,6 +50,7 @@ export const fetchLogin = createAsyncThunk(
 	}
 )
 
+// Fetch register
 export const fetchRegister = createAsyncThunk(
 	'auth/register',
 	async (data: RegisterData, { rejectWithValue }) => {
@@ -58,9 +63,20 @@ export const fetchRegister = createAsyncThunk(
 	}
 )
 
+// Fetch Logout
 export const fetchLogout = createAsyncThunk('auth/logout', async (_, { rejectWithValue }) => {
 	try {
 		await AuthService.logout()
+	} catch (error) {
+		rejectWithValue(error)
+	}
+})
+
+// Fetch CheckAuth
+export const fetchCheckAuth = createAsyncThunk('auth/checkAuth', async (_, { rejectWithValue }) => {
+	try {
+		const response = await axios.get<AuthResponse>(`${API_URL}/refresh`, { withCredentials: true })
+		return response.data
 	} catch (error) {
 		rejectWithValue(error)
 	}
@@ -82,6 +98,7 @@ export const authSlice = createSlice({
 			if (action.payload?.refreshToken) state.refreshToken = action.payload.refreshToken
 			if (action.payload?.navigateTo) state.navigateTo = action.payload.navigateTo
 			localStorage.setItem('token', action.payload?.accessToken as string)
+			state.isLoading = false
 		})
 		builder.addCase(fetchLogin.rejected, (state, action) => {
 			state.isLoading = false
@@ -119,6 +136,26 @@ export const authSlice = createSlice({
 		builder.addCase(fetchLogout.rejected, (state, action) => {
 			state.isError = true
 			state.isLoading = false
+			console.log(action.error.message)
+		})
+		// CheckAuth
+		builder.addCase(fetchCheckAuth.pending, (state) => {
+			state.isLoading = true
+		})
+		builder.addCase(fetchCheckAuth.fulfilled, (state, action) => {
+			state.isLoading = false
+
+			if (action.payload?.accessToken) {
+				localStorage.setItem('token', action.payload.accessToken)
+				state.accessToken = action.payload.accessToken
+			}
+			if (action.payload?.refreshToken) {
+				state.refreshToken = action.payload.refreshToken
+			}
+			if (action.payload?.user) state.userData = action.payload.user
+		})
+		builder.addCase(fetchCheckAuth.rejected, (state, action) => {
+			state.isError = true
 			console.log(action.error.message)
 		})
 	},

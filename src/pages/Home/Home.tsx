@@ -1,20 +1,21 @@
+import styles from './Home.module.sass'
+
 import About from '../../components/About/About'
 import Features from '../../components/Features/Features'
 import ScrollCharacter from '../../components/ScrollCharacter/ScrollCharacter'
 
-import styles from './Home.module.sass'
-
 import FaceImage from '../../images/face.svg?react'
+import Transition from '../../Transition/Transition'
 
-interface HomeProps {}
-
-export default function Home({}: HomeProps) {
+export default function Home() {
 	return (
-		<div className={styles.home}>
-			<About />
-			<FaceImage className={styles.face} />
-			<ScrollCharacter value='Still in doubt?' />
-			<Features />
-		</div>
+		<Transition>
+			<section className={styles.home}>
+				<About />
+				<FaceImage className={styles.face} />
+				<ScrollCharacter value='Still in doubt?' />
+				<Features />
+			</section>
+		</Transition>
 	)
 }

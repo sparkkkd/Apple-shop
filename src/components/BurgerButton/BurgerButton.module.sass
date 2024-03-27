@@ -1,0 +1,28 @@
+.burgerbutton
+  position: fixed
+  right: 25px
+  top: 11px
+  display: none
+  width: 50px
+  z-index: 999
+  &::after, &::before, div
+    margin: 7px 0px
+    content: ''
+    display: block
+    height: 3px
+    border-radius: 3px
+    background-color: #5002f5
+    transition: all .3s
+
+.burgerbutton_Active
+  &::before
+    transform: translateY(8px) rotate(135deg)
+  &::after
+    transform: translateY(-12px) rotate(-135deg)
+  div
+    transform: scale(0)
+
+// Media
+@media screen and ( max-width: 780px )
+  .burgerbutton
+    display: block

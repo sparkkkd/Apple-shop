@@ -4,7 +4,7 @@ import NavItem from '../UI/NavItem/NavItem'
 
 import { NAV_AUTH_ITEMS, NAV_ITEMS } from './constants'
 import { useAppSelector } from '../../hooks/redux'
-import UserHeader from '../UI/UserHeader/UserHeader'
+import UserHeader from '../UserHeader/UserHeader'
 
 interface HeaderProps {}
 

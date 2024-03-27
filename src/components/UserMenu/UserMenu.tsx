@@ -1,6 +1,6 @@
 import { useAppDispatch, useAppSelector } from '../../hooks/redux'
 import { fetchLogout } from '../../store/slices/authSlice'
-import { toggleMenu } from '../../store/slices/userMenuSlice'
+import { toggleUserMenu } from '../../store/slices/userMenuSlice'
 import styles from './UserMenu.module.sass'
 
 import { AnimatePresence, Variants, easeInOut, motion } from 'framer-motion'
@@ -68,11 +68,11 @@ const containerVariants: Variants = {
 }
 
 export default function UserMenu({}: UserMenuProps) {
-	const { isVisible } = useAppSelector((state) => state.userMenuSlice)
+	const { userMenuIsVisible } = useAppSelector((state) => state.userMenuSlice)
 	const dispatch = useAppDispatch()
 	return (
 		<AnimatePresence>
-			{isVisible && (
+			{userMenuIsVisible && (
 				<motion.div
 					className={styles.container}
 					variants={menuVariants}
@@ -93,7 +93,7 @@ export default function UserMenu({}: UserMenuProps) {
 							className={styles.item}
 							onClick={() => {
 								dispatch(fetchLogout())
-								dispatch(toggleMenu())
+								dispatch(toggleUserMenu())
 							}}
 						>
 							Log out

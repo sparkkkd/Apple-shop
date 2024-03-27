@@ -1,27 +1,3 @@
-.burgerbutton
-  display: none
-  position: fixed
-  right: 40px
-  top: 20px
-  width: 50px
-  z-index: 999
-  &::after, &::before, div
-    margin: 7px 0px
-    content: ''
-    display: block
-    height: 3px
-    border-radius: 3px
-    background-color: #5002f5
-    transition: all .3s
-
-.burgerbutton_Active
-  &::before
-    transform: translateY(8px) rotate(135deg)
-  &::after
-    transform: translateY(-12px) rotate(-135deg)
-  div
-    transform: scale(0)
-
 .burgermenu
   position: fixed
   width: 100%
@@ -59,16 +35,6 @@
 .authItem
   color: #551a8b
 
-@media screen and ( max-width: 780px )
-  .burgerbutton
-    display: block
-
 @media screen and ( max-width: 475px )
   .burgernavlist
     font-size: 42px
-  .burgerbutton
-    right: 20px
-
-@media screen and ( max-width: 360px )
-  .burgerbutton
-    right: 10px

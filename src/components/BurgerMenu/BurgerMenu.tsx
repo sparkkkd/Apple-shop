@@ -1,16 +1,20 @@
 import { Link } from 'react-router-dom'
-import styles from './Burger.module.sass'
-import BurgerButton from './BurgerButton'
-import { NAV_AUTH_ITEMS, NAV_ITEMS } from '../../Header/constants'
+import styles from './BurgerMenu.module.sass'
+
+import { useEffect } from 'react'
+
 import { motion, AnimatePresence, easeInOut, Variants } from 'framer-motion'
-import { useEffect, useState } from 'react'
-import { useAppDispatch, useAppSelector } from '../../../hooks/redux'
-import { fetchLogout } from '../../../store/slices/authSlice'
+
+import { useAppDispatch, useAppSelector } from '../../hooks/redux'
+import { fetchLogout } from '../../store/slices/authSlice'
+import { toggleMenu } from '../../store/slices/userMenuSlice'
+
+import { NAV_AUTH_ITEMS, NAV_ITEMS } from '../Header/constants'
 
 interface BurgerMenuProps {}
 
 export default function BurgerMenu({}: BurgerMenuProps) {
-	const [isVisible, setIsVisible] = useState<boolean>(false)
+	const { menuIsVisible } = useAppSelector((state) => state.userMenuSlice)
 	const { name } = useAppSelector((state) => state.authSlice.userData)
 	const dispatch = useAppDispatch()
 
@@ -78,7 +82,7 @@ export default function BurgerMenu({}: BurgerMenuProps) {
 
 	useEffect(() => {
 		function disableScroll() {
-			if (isVisible) document.body.style.overflow = 'hidden'
+			if (menuIsVisible) document.body.style.overflow = 'hidden'
 		}
 
 		function enableScroll() {
@@ -88,13 +92,12 @@ export default function BurgerMenu({}: BurgerMenuProps) {
 		disableScroll()
 
 		return enableScroll
-	}, [isVisible])
+	}, [menuIsVisible])
 
 	return (
 		<>
-			<BurgerButton isVisible={isVisible} setIsVisible={setIsVisible} />
 			<AnimatePresence>
-				{isVisible && (
+				{menuIsVisible && (
 					<motion.div
 						className={styles.burgermenu}
 						variants={menuVariants}
@@ -112,13 +115,26 @@ export default function BurgerMenu({}: BurgerMenuProps) {
 							>
 								{NAV_ITEMS.map(({ id, text, href }) => (
 									<div key={id} className={styles.burgernavitem}>
-										<motion.li variants={linkVariants} onClick={() => setIsVisible(false)}>
+										<motion.li variants={linkVariants} onClick={() => dispatch(toggleMenu())}>
 											<Link style={{ textDecoration: 'none' }} to={href}>
 												{text}
 											</Link>
 										</motion.li>
 									</div>
 								))}
+								{name && (
+									<div className={styles.burgernavitem}>
+										<motion.li
+											variants={linkVariants}
+											onClick={() => {
+												dispatch(toggleMenu())
+												dispatch(fetchLogout())
+											}}
+										>
+											<div className={styles.authItem}>Log out</div>
+										</motion.li>
+									</div>
+								)}
 							</motion.ul>
 						</nav>
 						<nav>
@@ -129,30 +145,16 @@ export default function BurgerMenu({}: BurgerMenuProps) {
 								exit='initial'
 								className={styles.burgernavlist}
 							>
-								{name ? (
-									<div className={styles.burgernavitem}>
-										<motion.li variants={linkVariants} onClick={() => setIsVisible(false)}>
-											<div
-												className={styles.authItem}
-												onClick={() => {
-													dispatch(fetchLogout())
-												}}
-											>
-												Log out
-											</div>
-										</motion.li>
-									</div>
-								) : (
+								{!name &&
 									NAV_AUTH_ITEMS.map(({ id, text, href }) => (
 										<div key={id} className={styles.burgernavitem}>
-											<motion.li variants={linkVariants} onClick={() => setIsVisible(false)}>
+											<motion.li variants={linkVariants} onClick={() => dispatch(toggleMenu())}>
 												<Link style={{ textDecoration: 'none' }} to={href}>
 													{text}
 												</Link>
 											</motion.li>
 										</div>
-									))
-								)}
+									))}
 							</motion.ul>
 						</nav>
 					</motion.div>
