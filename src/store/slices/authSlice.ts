@@ -46,9 +46,10 @@ export const fetchLogin = createAsyncThunk(
 	async (data: LoginData, { rejectWithValue }) => {
 		try {
 			const response = await AuthService.login(data.email, data.password)
+
 			return response.data
-		} catch (error) {
-			rejectWithValue(error)
+		} catch (error: any) {
+			return rejectWithValue(error.response.data.message)
 		}
 	}
 )
@@ -61,7 +62,7 @@ export const fetchRegister = createAsyncThunk(
 			const response = await AuthService.register(data.email, data.password, data.name)
 			return response.data
 		} catch (error) {
-			rejectWithValue(error)
+			return rejectWithValue(error)
 		}
 	}
 )
@@ -93,6 +94,7 @@ export const authSlice = createSlice({
 		// Login
 		builder.addCase(fetchLogin.pending, (state) => {
 			state.isLoading = true
+			state.isError = false
 		})
 		builder.addCase(fetchLogin.fulfilled, (state, action) => {
 			if (action.payload?.user) state.userData = action.payload?.user
@@ -101,20 +103,22 @@ export const authSlice = createSlice({
 			if (action.payload?.navigateTo) state.navigateTo = action.payload.navigateTo
 			localStorage.setItem('token', action.payload?.accessToken as string)
 			state.isLoading = false
+			state.isError = false
 		})
 		builder.addCase(fetchLogin.rejected, (state, action) => {
 			state.isLoading = false
 			state.isError = true
-			state.errorMessage = AUTH_FAIL
-			console.log(action.error.message)
+			console.log(action.error)
 		})
 		// Register
 		builder.addCase(fetchRegister.pending, (state) => {
 			state.isLoading = true
+			state.isError = false
 		})
 		builder.addCase(fetchRegister.fulfilled, (state, action) => {
 			console.log(action.payload)
 			state.isLoading = false
+			state.isError = false
 			if (action.payload?.user) state.userData = action.payload?.user
 			if (action.payload?.accessToken) state.accessToken = action.payload?.accessToken
 			if (action.payload?.refreshToken) state.refreshToken = action.payload.refreshToken
@@ -125,6 +129,7 @@ export const authSlice = createSlice({
 			state.isLoading = false
 			state.isError = true
 			console.log(action.error.message)
+			console.log(action.error.name)
 		})
 		// Logout
 		builder.addCase(fetchLogout.pending, (state) => {
