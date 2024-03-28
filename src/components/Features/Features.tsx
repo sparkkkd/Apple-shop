@@ -11,7 +11,7 @@ const windowWidth = window.innerWidth
 export default function Features() {
 	return (
 		<div
-			className={styles.container}
+			className={styles.features}
 			style={{
 				backgroundImage: `${windowWidth > 405 && `url(${ContainerImage})`}`,
 			}}

@@ -6,7 +6,7 @@ import { ABOUT_ITEMS } from './constant'
 
 export default function About() {
 	return (
-		<div className={styles.about}>
+		<div className={`${styles.about} container`}>
 			<SectionTitle>About us</SectionTitle>
 			<div className={styles.wrapper}>
 				{ABOUT_ITEMS.map(({ id, title, text }) => (

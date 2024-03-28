@@ -40,23 +40,21 @@ function App() {
 			<BurgerButton />
 			<BurgerMenu />
 
-			<div className={styles.container}>
-				<>
-					<Header />
+			{/* <div className={styles.container}> */}
+			<Header />
 
-					<AnimatePresence mode='wait'>
-						<Routes location={location} key={location.pathname}>
-							<Route index element={<Home />} />
-							<Route path='/catalog' element={<Catalog />} />
-							<Route path='/sign-up' element={<SignUp />} />
-							<Route path='/sign-in' element={<SignIn />} />
-							<Route path='/cart' element={<Cart />} />
-							<Route path='/contacts' element={<Contacts />} />
-							<Route path='/thanks' element={<ThanksRegister />} />
-						</Routes>
-					</AnimatePresence>
-				</>
-			</div>
+			<AnimatePresence mode='wait'>
+				<Routes location={location} key={location.pathname}>
+					<Route index element={<Home />} />
+					<Route path='/catalog' element={<Catalog />} />
+					<Route path='/sign-up' element={<SignUp />} />
+					<Route path='/sign-in' element={<SignIn />} />
+					<Route path='/cart' element={<Cart />} />
+					<Route path='/contacts' element={<Contacts />} />
+					<Route path='/thanks' element={<ThanksRegister />} />
+				</Routes>
+			</AnimatePresence>
+			{/* </div> */}
 		</>
 	)
 }
