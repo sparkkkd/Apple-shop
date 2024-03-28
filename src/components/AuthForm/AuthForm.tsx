@@ -1,20 +1,21 @@
+import styles from './AuthForm.module.sass'
+
+import AuthInput from '../UI/AuthInput/AuthInput'
+import AuthButton from '../UI/AuthButton/AuthButton'
+import SpinnerLoading from '../SpinnerLoading/SpinnerLoading'
+
+import { useEffect } from 'react'
+import { Navigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import * as Yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 
-import styles from './AuthForm.module.sass'
-
-import handImg from '../../images/hand.png'
-
-import AuthInput from '../UI/AuthInput/AuthInput'
-import AuthButton from '../UI/AuthButton/AuthButton'
-
 import { useAppDispatch, useAppSelector } from '../../hooks/redux'
 import { fetchLogin, fetchRegister, resetErrorMessage } from '../../store/slices/authSlice'
-import { Navigate } from 'react-router-dom'
+
 import { LoginData, RegisterData } from '../../models/IFormData'
-import SpinnerLoading from '../SpinnerLoading/SpinnerLoading'
-import { useEffect } from 'react'
+
+import handImg from '../../images/hand.png'
 
 interface FormData {
 	email: string
@@ -57,11 +58,7 @@ export default function AuthForm({ formType }: AuthFormProps) {
 	const {
 		register,
 		handleSubmit,
-		// setError,
-		formState: {
-			errors,
-			// isValid
-		},
+		formState: { errors },
 	} = useForm<FormData>({
 		defaultValues: {},
 		mode: 'onChange',
@@ -102,7 +99,6 @@ export default function AuthForm({ formType }: AuthFormProps) {
 						register={register}
 						registerName='email'
 						titleName='Enter your email'
-						// registerValidationText='почту'
 						isError={Boolean(errors.email?.message)}
 						errorText={errors.email?.message}
 					/>
@@ -111,7 +107,6 @@ export default function AuthForm({ formType }: AuthFormProps) {
 							register={register}
 							registerName='name'
 							titleName='Enter your name'
-							// registerValidationText='имя'
 							isError={Boolean(errors.name?.message)}
 							errorText={errors.name?.message}
 						/>
@@ -121,7 +116,6 @@ export default function AuthForm({ formType }: AuthFormProps) {
 						register={register}
 						registerName='password'
 						titleName='Enter your password'
-						// registerValidationText='пароль'
 						isError={Boolean(errors.password?.message)}
 						errorText={errors.password?.message}
 					/>

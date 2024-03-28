@@ -1,8 +1,6 @@
 import styles from './SpinnerLoading.module.sass'
 
-interface SpinnerLoadingProps {}
-
-export default function SpinnerLoading({}: SpinnerLoadingProps) {
+export default function SpinnerLoading() {
 	return (
 		<div className={styles.loaderWrapper}>
 			<span className={styles.loader}></span>

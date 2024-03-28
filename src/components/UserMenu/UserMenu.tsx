@@ -1,11 +1,10 @@
-import { useAppDispatch, useAppSelector } from '../../hooks/redux'
-import { fetchLogout } from '../../store/slices/authSlice'
-import { toggleUserMenu } from '../../store/slices/userMenuSlice'
 import styles from './UserMenu.module.sass'
 
 import { AnimatePresence, Variants, easeInOut, motion } from 'framer-motion'
 
-interface UserMenuProps {}
+import { useAppDispatch, useAppSelector } from '../../hooks/redux'
+import { fetchLogout } from '../../store/slices/authSlice'
+import { toggleUserMenu } from '../../store/slices/userMenuSlice'
 
 const menuVariants: Variants = {
 	initial: {
@@ -67,7 +66,7 @@ const containerVariants: Variants = {
 	},
 }
 
-export default function UserMenu({}: UserMenuProps) {
+export default function UserMenu() {
 	const { userMenuIsVisible } = useAppSelector((state) => state.userMenuSlice)
 	const dispatch = useAppDispatch()
 	return (

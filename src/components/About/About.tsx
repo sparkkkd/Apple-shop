@@ -1,10 +1,10 @@
-import SectionTitle from '../UI/SectionTitle/SectionTitle'
 import styles from './About.module.sass'
+
+import SectionTitle from '../UI/SectionTitle/SectionTitle'
+
 import { ABOUT_ITEMS } from './constant'
 
-interface AboutProps {}
-
-export default function About({}: AboutProps) {
+export default function About() {
 	return (
 		<div className={styles.about}>
 			<SectionTitle>About us</SectionTitle>

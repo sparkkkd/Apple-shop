@@ -1,14 +1,14 @@
-import { Link } from 'react-router-dom'
 import styles from './Features.module.sass'
+
+import { Link } from 'react-router-dom'
+
 import { FEATURES_ITEMS } from './constant'
 
 import ContainerImage from '../../images/phone-main.png'
 
-interface FeaturesProps {}
-
 const windowWidth = window.innerWidth
 
-export default function Features({}: FeaturesProps) {
+export default function Features() {
 	return (
 		<div
 			className={styles.container}

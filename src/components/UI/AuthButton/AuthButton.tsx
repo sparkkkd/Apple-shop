@@ -1,5 +1,6 @@
-import { ReactNode } from 'react'
 import styles from './authbutton.module.sass'
+
+import { ReactNode } from 'react'
 
 interface AuthButtonProps {
 	children: ReactNode

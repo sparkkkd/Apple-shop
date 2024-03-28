@@ -1,10 +1,11 @@
 import styles from './Header.module.sass'
 
 import NavItem from '../UI/NavItem/NavItem'
+import UserHeader from '../UserHeader/UserHeader'
+
+import { useAppSelector } from '../../hooks/redux'
 
 import { NAV_AUTH_ITEMS, NAV_ITEMS } from './constants'
-import { useAppSelector } from '../../hooks/redux'
-import UserHeader from '../UserHeader/UserHeader'
 
 interface HeaderProps {}
 

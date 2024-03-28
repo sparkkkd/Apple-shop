@@ -1,8 +1,11 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { IUser } from '../../models/IUser'
-import AuthService from '../../services/AuthService'
 import axios from 'axios'
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+
+import AuthService from '../../services/AuthService'
+
 import { AuthResponse } from '../../models/response/AuthResponse'
+import { IUser } from '../../models/IUser'
+
 import { API_URL } from '../../http'
 
 interface initialStateType {
@@ -122,7 +125,6 @@ export const authSlice = createSlice({
 			state.errorMessage = ''
 		})
 		builder.addCase(fetchRegister.fulfilled, (state, action) => {
-			console.log(action.payload)
 			state.isLoading = false
 			state.isError = false
 			state.errorMessage = ''
@@ -149,7 +151,6 @@ export const authSlice = createSlice({
 			state.userData = {} as IUser
 		})
 		builder.addCase(fetchLogout.rejected, (state, action) => {
-			state.isError = true
 			state.isLoading = false
 			console.log(action.error.message)
 		})
@@ -159,18 +160,14 @@ export const authSlice = createSlice({
 		})
 		builder.addCase(fetchCheckAuth.fulfilled, (state, action) => {
 			state.isLoading = false
-
 			if (action.payload?.accessToken) {
 				localStorage.setItem('token', action.payload.accessToken)
 				state.accessToken = action.payload.accessToken
 			}
-			if (action.payload?.refreshToken) {
-				state.refreshToken = action.payload.refreshToken
-			}
+			if (action.payload?.refreshToken) state.refreshToken = action.payload.refreshToken
 			if (action.payload?.user) state.userData = action.payload.user
 		})
 		builder.addCase(fetchCheckAuth.rejected, (state, action) => {
-			state.isError = true
 			state.isLoading = false
 			console.log(action.error.message)
 		})

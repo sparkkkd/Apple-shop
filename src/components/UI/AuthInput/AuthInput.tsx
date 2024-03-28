@@ -1,6 +1,6 @@
-import { FieldValues, Path, UseFormRegister } from 'react-hook-form'
-
 import styles from './input.module.sass'
+
+import { FieldValues, Path, UseFormRegister } from 'react-hook-form'
 
 type InputProps<T extends FieldValues> = {
 	registerName: Path<T>

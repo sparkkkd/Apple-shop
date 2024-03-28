@@ -1,6 +1,6 @@
-import { useRef } from 'react'
 import styles from './ScrollCharacter.module.sass'
 
+import { useRef } from 'react'
 import { useScroll, motion, MotionValue, useTransform } from 'framer-motion'
 
 interface ScrollCharacterProps {

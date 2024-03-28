@@ -1,5 +1,6 @@
-import { ReactNode } from 'react'
 import styles from './SectionTitle.module.sass'
+
+import { ReactNode } from 'react'
 
 interface SectionTitleProps {
 	children: ReactNode

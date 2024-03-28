@@ -1,8 +1,7 @@
-import { Link } from 'react-router-dom'
 import styles from './BurgerMenu.module.sass'
 
+import { Link } from 'react-router-dom'
 import { useEffect } from 'react'
-
 import { motion, AnimatePresence, easeInOut, Variants } from 'framer-motion'
 
 import { useAppDispatch, useAppSelector } from '../../hooks/redux'
@@ -11,9 +10,7 @@ import { toggleMenu } from '../../store/slices/userMenuSlice'
 
 import { NAV_AUTH_ITEMS, NAV_ITEMS } from '../Header/constants'
 
-interface BurgerMenuProps {}
-
-export default function BurgerMenu({}: BurgerMenuProps) {
+export default function BurgerMenu() {
 	const { menuIsVisible } = useAppSelector((state) => state.userMenuSlice)
 	const { name } = useAppSelector((state) => state.authSlice.userData)
 	const dispatch = useAppDispatch()

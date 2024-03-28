@@ -1,7 +1,8 @@
-import { FaAngleDown } from 'react-icons/fa6'
-
 import styles from './UserHeader.module.sass'
+
 import UserMenu from '../UserMenu/UserMenu'
+
+import { FaAngleDown } from 'react-icons/fa6'
 
 import { useAppDispatch, useAppSelector } from '../../hooks/redux'
 import { toggleUserMenu } from '../../store/slices/userMenuSlice'
