@@ -10,10 +10,11 @@ import AuthInput from '../UI/AuthInput/AuthInput'
 import AuthButton from '../UI/AuthButton/AuthButton'
 
 import { useAppDispatch, useAppSelector } from '../../hooks/redux'
-import { fetchLogin, fetchRegister } from '../../store/slices/authSlice'
+import { fetchLogin, fetchRegister, resetErrorMessage } from '../../store/slices/authSlice'
 import { Navigate } from 'react-router-dom'
 import { LoginData, RegisterData } from '../../models/IFormData'
 import SpinnerLoading from '../SpinnerLoading/SpinnerLoading'
+import { useEffect } from 'react'
 
 interface FormData {
 	email: string
@@ -41,11 +42,17 @@ const registerValidationScheme = {
 
 export default function AuthForm({ formType }: AuthFormProps) {
 	const dispatch = useAppDispatch()
-	const { navigateTo, isLoading } = useAppSelector((state) => state.authSlice)
+	const { navigateTo, isLoading, isError, errorMessage } = useAppSelector(
+		(state) => state.authSlice
+	)
 
 	const validationSchema = Yup.object().shape(
 		formType === 'signin' ? loginValidationScheme : registerValidationScheme
 	)
+
+	useEffect(() => {
+		dispatch(resetErrorMessage())
+	}, [])
 
 	const {
 		register,
@@ -118,6 +125,9 @@ export default function AuthForm({ formType }: AuthFormProps) {
 						isError={Boolean(errors.password?.message)}
 						errorText={errors.password?.message}
 					/>
+
+					{isError && <div className={styles.error}>{errorMessage}</div>}
+
 					<AuthButton>{formType === 'signin' ? 'Sign in' : 'Sign up'}</AuthButton>
 				</form>
 			</div>

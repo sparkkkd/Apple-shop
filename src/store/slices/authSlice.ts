@@ -5,7 +5,6 @@ import axios from 'axios'
 import { AuthResponse } from '../../models/response/AuthResponse'
 import { API_URL } from '../../http'
 
-const AUTH_FAIL: string = 'Неверное имя пользователя или пароль'
 interface initialStateType {
 	userData: IUser
 	isLoading: boolean
@@ -61,8 +60,8 @@ export const fetchRegister = createAsyncThunk(
 		try {
 			const response = await AuthService.register(data.email, data.password, data.name)
 			return response.data
-		} catch (error) {
-			return rejectWithValue(error)
+		} catch (error: any) {
+			return rejectWithValue(error.response.data.message)
 		}
 	}
 )
@@ -71,8 +70,8 @@ export const fetchRegister = createAsyncThunk(
 export const fetchLogout = createAsyncThunk('auth/logout', async (_, { rejectWithValue }) => {
 	try {
 		await AuthService.logout()
-	} catch (error) {
-		rejectWithValue(error)
+	} catch (error: any) {
+		return rejectWithValue(error.response.data.message)
 	}
 })
 
@@ -89,12 +88,17 @@ export const fetchCheckAuth = createAsyncThunk('auth/checkAuth', async (_, { rej
 export const authSlice = createSlice({
 	name: 'auth',
 	initialState,
-	reducers: {},
+	reducers: {
+		resetErrorMessage: (state) => {
+			state.errorMessage = ''
+		},
+	},
 	extraReducers: (builder) => {
 		// Login
 		builder.addCase(fetchLogin.pending, (state) => {
 			state.isLoading = true
 			state.isError = false
+			state.errorMessage = ''
 		})
 		builder.addCase(fetchLogin.fulfilled, (state, action) => {
 			if (action.payload?.user) state.userData = action.payload?.user
@@ -104,21 +108,24 @@ export const authSlice = createSlice({
 			localStorage.setItem('token', action.payload?.accessToken as string)
 			state.isLoading = false
 			state.isError = false
+			state.errorMessage = ''
 		})
 		builder.addCase(fetchLogin.rejected, (state, action) => {
 			state.isLoading = false
 			state.isError = true
-			console.log(action.error)
+			state.errorMessage = action.payload as string
 		})
 		// Register
 		builder.addCase(fetchRegister.pending, (state) => {
 			state.isLoading = true
 			state.isError = false
+			state.errorMessage = ''
 		})
 		builder.addCase(fetchRegister.fulfilled, (state, action) => {
 			console.log(action.payload)
 			state.isLoading = false
 			state.isError = false
+			state.errorMessage = ''
 			if (action.payload?.user) state.userData = action.payload?.user
 			if (action.payload?.accessToken) state.accessToken = action.payload?.accessToken
 			if (action.payload?.refreshToken) state.refreshToken = action.payload.refreshToken
@@ -128,8 +135,7 @@ export const authSlice = createSlice({
 		builder.addCase(fetchRegister.rejected, (state, action) => {
 			state.isLoading = false
 			state.isError = true
-			console.log(action.error.message)
-			console.log(action.error.name)
+			state.errorMessage = action.payload as string
 		})
 		// Logout
 		builder.addCase(fetchLogout.pending, (state) => {
@@ -172,3 +178,5 @@ export const authSlice = createSlice({
 })
 
 export default authSlice.reducer
+
+export const { resetErrorMessage } = authSlice.actions
