@@ -12,7 +12,7 @@ export default function ScrollCharacter({ value }: ScrollCharacterProps) {
 
 	const { scrollYProgress } = useScroll({
 		target: element,
-		offset: ['start end', 'start start'],
+		offset: ['start end', '50% 50%'],
 	})
 
 	const words = value.split(' ')

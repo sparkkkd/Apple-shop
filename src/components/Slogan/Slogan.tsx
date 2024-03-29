@@ -17,10 +17,12 @@ export default function Slogan() {
 	return (
 		<motion.div className={styles.text}>
 			<motion.span style={{ x: topText }}>
-				We are more than just a store We are more than just a store We are more than just a store
+				Мы больше, чем просто магазин Мы больше, чем просто магазин Мы больше, чем просто магазин
+				{/* We are more than just a store We are more than just a store We are more than just a store */}
 			</motion.span>
 			<motion.span style={{ x: bottomText }}>
-				You're more than just a client You're more than just a client You're more than just a client
+				Ты больше, чем просто клиент Ты больше, чем просто клиент Ты больше, чем просто клиент
+				{/* You're more than just a client You're more than just a client You're more than just a client */}
 			</motion.span>
 		</motion.div>
 	)

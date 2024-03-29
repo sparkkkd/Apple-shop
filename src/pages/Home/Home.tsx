@@ -8,6 +8,7 @@ import FaceImage from '../../images/face.svg?react'
 import Transition from '../../Transition/Transition'
 import IphoneComponent from '../../components/IphoneComponent/IphoneComponent'
 import Slogan from '../../components/Slogan/Slogan'
+import ParallaxIntroImages from '../../components/ParallaxIntroImages/ParallaxIntroImages'
 
 export default function Home() {
 	return (
@@ -16,8 +17,9 @@ export default function Home() {
 				<About />
 				<IphoneComponent />
 				<Slogan />
+				<ParallaxIntroImages />
 				<FaceImage className={styles.face} />
-				<ScrollCharacter value='Still in doubt?' />
+				<ScrollCharacter value='Все еще сомневаетесь?' />
 				<Features />
 			</section>
 		</Transition>

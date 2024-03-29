@@ -4,19 +4,20 @@ import { Link } from 'react-router-dom'
 
 import { FEATURES_ITEMS } from './constant'
 
+import { useWindowSize } from '../../hooks/useWindowsSize'
+
 import ContainerImage from '../../images/phone-main.png'
 
-const windowWidth = window.innerWidth
-
 export default function Features() {
+	const [width, _] = useWindowSize()
 	return (
 		<div
 			className={styles.features}
 			style={{
-				backgroundImage: `${windowWidth > 405 && `url(${ContainerImage})`}`,
+				backgroundImage: `${width > 405 && `url(${ContainerImage})`}`,
 			}}
 		>
-			<h2>Why choose us?</h2>
+			<h2>Почему мы?</h2>
 			<div className={styles.wrapper}>
 				{FEATURES_ITEMS.map(({ id, title, text }) => (
 					<div key={id} className={styles.feature}>
@@ -25,7 +26,7 @@ export default function Features() {
 					</div>
 				))}
 				<Link className={styles.button} to='/catalog'>
-					Go to the catalog
+					Перейти в каталог
 				</Link>
 			</div>
 		</div>

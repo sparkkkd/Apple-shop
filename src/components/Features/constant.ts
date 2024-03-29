@@ -5,22 +5,22 @@ import { IFeatures } from '../../models/IFeatures'
 export const FEATURES_ITEMS: Array<IFeatures> = [
 	{
 		id: uuidv4(),
-		title: 'High quality',
-		text: `We only guarantee new and genuine Apple iPhones with a manufacturer's warranty. All devices are checked for quality before personal transfer to the customer.`,
+		title: 'Высокое качество',
+		text: `Мы гарантируем высокое качество нашей Apple продукции. Будь то новое или б/у устройство, мы отвечаем за качество.`,
 	},
 	{
 		id: uuidv4(),
-		title: 'Convenient and quick problem resolution',
-		text: `Our technical support department specializes in Apple iPhones and is ready to help with any questions and problems related to these devices.`,
+		title: 'Удобное и быстрое решение проблем',
+		text: `Наш отдел технической поддержки специализируется на Apple продукции и готов помочь с любыми вопросами и проблемами, связанными с этими устройствами.`,
 	},
 	{
 		id: uuidv4(),
-		title: 'Favorable prices',
-		text: `We offer competitive prices for new and used Apple iPhones, as well as regular promotions and discounts for regular customers.`,
+		title: 'Лучшие цены',
+		text: `Мы предлагаем самые вкусные цены на новые и б/у устройства Apple.`,
 	},
 	{
 		id: uuidv4(),
-		title: 'Transparent exchange and refund policy',
-		text: `We provide nationwide delivery, a simple exchange or refund process within 30 days, and full transparency during all transactions.`,
+		title: 'Прозрачная политика обмена и возврата денег',
+		text: `Мы обеспечиваем доставку по всей стране, простой процесс обмена или возврата денег в течение 14 дней и полную прозрачность во время всех транзакций.`,
 	},
 ]

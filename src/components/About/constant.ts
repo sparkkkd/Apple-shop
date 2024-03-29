@@ -5,27 +5,27 @@ import { IAbout } from '../../models/IAbout'
 export const ABOUT_ITEMS: Array<IAbout> = [
 	{
 		id: uuidv4(),
-		title: 'Welcome to our store!',
-		text: `We specialize in buying, selling, and trading-in a wide range of new and pre-owned Apple products. Whether you're looking to upgrade your current device or want to sell your gently used Apple gadget, we've got you covered.`,
+		title: 'Добро пожаловать в наш магазин!',
+		text: `Мы специализируемся на покупке, продаже и обмене новых и б/у продуктов Apple. Независимо от того, хотите ли вы обновить свое текущее устройство или продать свой подержанный гаджет Apple, мы поможем вам.`,
 	},
 	{
 		id: uuidv4(),
-		title: 'Experts',
-		text: `Our team of expert appraisers offers competitive and fair prices for your pre-owned devices, ensuring you get the best value for your trade-in. We accept various models of iPhones, iPads, Mac computers, and Apple Watches, ensuring that we cater to a diverse range of Apple users.`,
+		title: 'Эксперты',
+		text: `Наша команда экспертов-оценщиков предлагает конкурентоспособные и справедливые цены на ваши б/у устройства, гарантируя, что вы получите наилучшее соотношение цены и качества при обмене. Мы принимаем различные модели iPhone, iPad, Mac и Apple Watch, гарантируя, что мы обслуживаем широкий круг пользователей Apple.`,
 	},
 	{
 		id: uuidv4(),
-		title: 'Pay the way you feel comfortable',
-		text: `You can choose from various payment methods, including cash or store credit for your next purchase. We're committed to making the process as convenient and hassle-free as possible for our customers.`,
+		title: 'Оплачивайте самым удобным для вас способом',
+		text: `Вы можете выбрать один из различных способов оплаты, включая наличные или рассрочку в магазине для вашей покупки. Мы стремимся сделать этот процесс максимально удобным и беспроблемным для наших клиентов.`,
 	},
 	{
 		id: uuidv4(),
-		title: 'A wide range of products',
-		text: `In addition to buying and trading-in Apple devices, we also sell a variety of new and pre-owned Apple products at competitive prices. Our inventory is regularly updated with the latest models and releases to ensure that our customer's always have access to the newest technology.`,
+		title: 'Широкий ассортимент продукции',
+		text: `Наш ассортимент регулярно пополняется новейшими моделями и релизами, чтобы наши клиенты всегда имели доступ к новейшим технологиям.`,
 	},
 	{
 		id: uuidv4(),
-		title: 'The best customer orientation in the city',
-		text: `Our commitment to customer satisfaction is at the heart of everything we do, and we're dedicated to providing a seamless experience from start to finish. Whether you're looking to sell, buy, or trade-in an Apple product, we invite you to visit our store and see for yourself what sets us apart from the competition.`,
+		title: 'Лучшая клиентоориентированность в городе',
+		text: `Наше стремление к удовлетворению потребностей клиентов лежит в основе всего, что мы делаем, и мы стремимся обеспечить безупречный сервис от начала до конца. Независимо от того, хотите ли вы продать, купить или обменять продукт Apple, мы приглашаем вас посетить наш магазин и лично убедиться в том, что отличает нас от конкурентов.`,
 	},
 ]

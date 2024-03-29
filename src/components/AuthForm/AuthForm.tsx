@@ -98,7 +98,7 @@ export default function AuthForm({ formType }: AuthFormProps) {
 					<AuthInput
 						register={register}
 						registerName='email'
-						titleName='Enter your email'
+						titleName='Введите вашу почту'
 						isError={Boolean(errors.email?.message)}
 						errorText={errors.email?.message}
 					/>
@@ -106,7 +106,7 @@ export default function AuthForm({ formType }: AuthFormProps) {
 						<AuthInput
 							register={register}
 							registerName='name'
-							titleName='Enter your name'
+							titleName='Введите ваше имя'
 							isError={Boolean(errors.name?.message)}
 							errorText={errors.name?.message}
 						/>
@@ -115,14 +115,14 @@ export default function AuthForm({ formType }: AuthFormProps) {
 					<AuthInput
 						register={register}
 						registerName='password'
-						titleName='Enter your password'
+						titleName='Введите ваш пароль'
 						isError={Boolean(errors.password?.message)}
 						errorText={errors.password?.message}
 					/>
 
 					{isError && <div className={styles.error}>{errorMessage}</div>}
 
-					<AuthButton>{formType === 'signin' ? 'Sign in' : 'Sign up'}</AuthButton>
+					<AuthButton>{formType === 'signin' ? 'Войти' : 'Регистрация'}</AuthButton>
 				</form>
 			</div>
 			{isLoading && <SpinnerLoading />}
