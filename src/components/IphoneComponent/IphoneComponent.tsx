@@ -23,23 +23,15 @@ export default function IphoneComponent() {
 				<OrbitControls scale={1} enableZoom={false} enableRotate={false} />
 				<PerspectiveCamera makeDefault position={[1, 1, -10]} />
 				<Environment preset='city' />
-				<Suspense fallback={null}>
-					<IphoneModel
-						positionZ={z1}
-						rotatePropY={-3}
-						rotatePropX={0}
-						rotatePropZ={0}
-						positionX={-5}
-					/>
+				<IphoneModel
+					positionZ={z1}
+					rotatePropY={-3}
+					rotatePropX={0}
+					rotatePropZ={0}
+					positionX={-5}
+				/>
 
-					<IphoneModel
-						positionZ={z2}
-						rotatePropY={3}
-						rotatePropX={0}
-						rotatePropZ={0}
-						positionX={5}
-					/>
-				</Suspense>
+				<IphoneModel positionZ={z2} rotatePropY={3} rotatePropX={0} rotatePropZ={0} positionX={5} />
 			</Canvas>
 		</div>
 	)
