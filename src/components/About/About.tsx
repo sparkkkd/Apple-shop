@@ -1,19 +1,38 @@
 import styles from './About.module.sass'
 
 import SectionTitle from '../UI/SectionTitle/SectionTitle'
+import { MFeaturesEnumeration } from '../UI/FeaturesEnumeration/FeaturesEnumeration'
+
+import { motion } from 'framer-motion'
 
 import { ABOUT_ITEMS } from './constant'
-import FeaturesEnumeration from '../UI/FeaturesEnumeration/FeaturesEnumeration'
+import { fromBottomVariants } from '../../animations/animations'
 
 export default function About() {
 	return (
-		<div className={`${styles.about} container`}>
+		<motion.section
+			initial='initial'
+			whileInView='animate'
+			viewport={{ amount: 0.2, once: true }}
+			className={`${styles.about}`}
+		>
 			<SectionTitle>О нас</SectionTitle>
-			<div className={styles.wrapper}>
-				{ABOUT_ITEMS.map(({ id, title, text }) => (
-					<FeaturesEnumeration key={id} title={title} text={text} />
+			<motion.div
+				initial='initial'
+				whileInView='animate'
+				viewport={{ amount: 0.2, once: true }}
+				className={styles.wrapper}
+			>
+				{ABOUT_ITEMS.map(({ id, title, text }, i) => (
+					<MFeaturesEnumeration
+						key={id}
+						title={title}
+						text={text}
+						variants={fromBottomVariants}
+						custom={i + 3}
+					/>
 				))}
-			</div>
-		</div>
+			</motion.div>
+		</motion.section>
 	)
 }

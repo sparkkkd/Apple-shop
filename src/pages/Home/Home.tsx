@@ -13,7 +13,7 @@ import Slogan from '../../components/Slogan/Slogan'
 import SloganDescribe from '../../components/SloganDescribe/SloganDescribe'
 import Intro from '../../components/Intro/Intro'
 import SpinnerLoading from '../../components/SpinnerLoading/SpinnerLoading'
-import ServiceCenter from '../../components/ServiceCenter/Service'
+import ServiceCenter from '../../components/ServiceCenter/ServiceCenter'
 
 export default function Home() {
 	const [isPhoneSectionVisible, setIsPhoneSectionVisible] = useState<boolean>(false)

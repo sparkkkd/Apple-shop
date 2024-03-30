@@ -2,10 +2,17 @@ import styles from './SectionTitle.module.sass'
 
 import { ReactNode } from 'react'
 
+import { motion } from 'framer-motion'
+import { fromTopVariants } from '../../../animations/animations'
+
 interface SectionTitleProps {
 	children: ReactNode
 }
 
 export default function SectionTitle({ children }: SectionTitleProps) {
-	return <h1 className={styles.title}>{children}</h1>
+	return (
+		<motion.h1 variants={fromTopVariants} className={styles.title}>
+			{children}
+		</motion.h1>
+	)
 }

@@ -1,18 +1,29 @@
 import styles from './ServiceCenter.module.sass'
 import './swiper-controls.sass'
 
+import { motion } from 'framer-motion'
+
 import SectionTitle from '../UI/SectionTitle/SectionTitle'
-import FeaturesEnumeration from '../UI/FeaturesEnumeration/FeaturesEnumeration'
+import {
+	FeaturesEnumeration,
+	MFeaturesEnumeration,
+} from '../UI/FeaturesEnumeration/FeaturesEnumeration'
 
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay } from 'swiper/modules'
 import 'swiper/css'
 
+import { fromBottomVariants } from '../../animations/animations'
 import { SLIDER_ITEMS, FEATURES_TITLE, SERVICE_ITEMS } from './constant'
 
 export default function ServiceCenter() {
 	return (
-		<div className={`${styles.service} test`}>
+		<motion.section
+			initial='initial'
+			whileInView='animate'
+			viewport={{ amount: 0.2, once: true }}
+			className={`${styles.service} test`}
+		>
 			<SectionTitle>Сервисный центр</SectionTitle>
 
 			<div className={styles.slider}>
@@ -36,15 +47,25 @@ export default function ServiceCenter() {
 				</Swiper>
 			</div>
 
-			<div className={styles.features}>
+			<motion.div
+				className={styles.features}
+				initial='initial'
+				whileInView='animate'
+				viewport={{ once: true }}
+			>
 				<h3 className={styles.featuresTitle}>
 					<FEATURES_TITLE />
 				</h3>
-
-				{SERVICE_ITEMS.map(({ id, title, text }) => (
-					<FeaturesEnumeration key={id} title={title} text={text} />
+				{SERVICE_ITEMS.map(({ id, title, text }, i) => (
+					<MFeaturesEnumeration
+						key={id}
+						title={title}
+						text={text}
+						variants={fromBottomVariants}
+						custom={i + 3}
+					/>
 				))}
-			</div>
-		</div>
+			</motion.div>
+		</motion.section>
 	)
 }
