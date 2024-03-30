@@ -6,11 +6,11 @@ import About from '../../components/About/About'
 import Features from '../../components/Features/Features'
 import ScrollCharacter from '../../components/ScrollCharacter/ScrollCharacter'
 
-import FaceImage from '../../images/face.svg?react'
+// import FaceImage from '../../images/face.svg?react'
 import Transition from '../../Transition/Transition'
 const IphoneComponent = lazy(() => import('../../components/IphoneComponent/IphoneComponent'))
 import Slogan from '../../components/Slogan/Slogan'
-import ParallaxIntroImages from '../../components/ParallaxIntroImages/ParallaxIntroImages'
+import SloganDescribe from '../../components/SloganDescribe/SloganDescribe'
 import Intro from '../../components/Intro/Intro'
 import SpinnerLoading from '../../components/SpinnerLoading/SpinnerLoading'
 
@@ -34,8 +34,8 @@ export default function Home() {
 				)}
 
 				<Slogan />
-				<ParallaxIntroImages />
-				<FaceImage className={styles.face} />
+				<SloganDescribe />
+				{/* <FaceImage className={styles.face} /> */}
 				<ScrollCharacter value='Все еще сомневаетесь?' />
 				<Features />
 			</section>
