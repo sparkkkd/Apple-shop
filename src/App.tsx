@@ -19,7 +19,7 @@ import BurgerButton from './components/BurgerButton/BurgerButton'
 import { useAppDispatch } from './hooks/redux'
 import { fetchCheckAuth } from './store/slices/authSlice'
 
-import BackgroundImage from './images/bg.gif'
+import BackgroundImage from './images/noise-bg.jpg'
 
 function App() {
 	const location = useLocation()

@@ -83,7 +83,7 @@ interface ModelProps {
 }
 
 export default function Model({ rotatePropY, positionZ, positionX }: ModelProps) {
-	const { nodes, materials } = useGLTF('Apple-shop/iphone-model.glb') as GLTFResult
+	const { nodes, materials } = useGLTF('/Apple-shop/iphone-model.glb') as GLTFResult
 
 	return (
 		<Float>
@@ -218,4 +218,4 @@ export default function Model({ rotatePropY, positionZ, positionX }: ModelProps)
 	)
 }
 
-useGLTF.preload('Apple-shop/iphone-model.glb')
+useGLTF.preload('/Apple-shop/iphone-model.glb')

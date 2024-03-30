@@ -1,0 +1,101 @@
+.intro
+  position: relative
+  width: 100%
+  height: calc( 100vh - 117px )
+  display: flex
+  justify-content: center
+  align-items: center
+  flex-direction: column
+  overflow: hidden
+
+.logo
+  position: relative
+
+.ball
+  width: 300px
+  height: 300px
+  background-color: #fff
+  border-radius: 50%
+  box-shadow: 0px 0px 24px 4px rgb(255, 255, 255)
+  animation-duration: 3s
+  animation-name: ball-shadows
+  animation-iteration-count: infinite
+  animation-direction: alternate
+
+.title
+  position: absolute
+  left: 50%
+  top: 50%
+  transform: translate(-50%, -50%)
+  font-size: 100px
+  color: #fff
+  z-index: 2
+  mix-blend-mode: difference
+
+.slogan
+  margin-top: 40px
+  display: flex
+  justify-content: center
+  align-items: center
+  flex-direction: column
+
+.text
+  margin-bottom: 10px
+  font-size: 32px
+  &:last-child
+    margin-bottom: 0px
+
+@keyframes ball-shadows
+  0%
+    box-shadow: 0px 0px 24px 4px rgb(255, 255, 255)
+  50%
+    box-shadow: 0px 0px 20px 8px rgb(255, 255, 255)
+  100%
+    box-shadow: 0px 0px 24px 4px rgb(255, 255, 255)
+
+// Media
+@media screen and ( max-width: 1040px )
+  .intro
+    height: calc( 100vh - 69px )
+
+@media screen and ( max-width: 780px )
+  .intro
+    height: calc( 100vh - 37px )
+
+@media screen and ( max-width: 610px )
+  .ball
+    width: 250px
+    height: 250px
+
+  .title
+    font-size: 81px
+
+  .text
+    margin-bottom: 0px
+    font-size: 26px
+
+@media screen and ( max-width: 480px )
+  .ball
+    width: 200px
+    height: 200px
+
+  .title
+    font-size: 60px
+
+  .text
+    font-size: 22px
+
+@media screen and ( max-width: 380px )
+  .ball
+    width: 150px
+    height: 150px
+
+  .title
+    font-size: 50px
+
+  .text
+    font-size: 20px
+
+@media screen and ( max-width: 330px )
+  .text
+    font-size: 18px

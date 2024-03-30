@@ -9,11 +9,13 @@ import Transition from '../../Transition/Transition'
 import IphoneComponent from '../../components/IphoneComponent/IphoneComponent'
 import Slogan from '../../components/Slogan/Slogan'
 import ParallaxIntroImages from '../../components/ParallaxIntroImages/ParallaxIntroImages'
+import Intro from '../../components/Intro/Intro'
 
 export default function Home() {
 	return (
 		<Transition>
 			<section className={styles.home}>
+				<Intro />
 				<About />
 				<IphoneComponent />
 				<Slogan />

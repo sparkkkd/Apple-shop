@@ -9,7 +9,7 @@ import { setupStore } from './store/store.ts'
 const store = setupStore()
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-	<BrowserRouter basename='Apple-shop'>
+	<BrowserRouter basename='/Apple-shop'>
 		<Provider store={store}>
 			<App />
 		</Provider>
