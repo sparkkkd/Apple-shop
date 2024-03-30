@@ -13,6 +13,7 @@ import Slogan from '../../components/Slogan/Slogan'
 import SloganDescribe from '../../components/SloganDescribe/SloganDescribe'
 import Intro from '../../components/Intro/Intro'
 import SpinnerLoading from '../../components/SpinnerLoading/SpinnerLoading'
+import ServiceCenter from '../../components/ServiceCenter/Service'
 
 export default function Home() {
 	const [isPhoneSectionVisible, setIsPhoneSectionVisible] = useState<boolean>(false)
@@ -38,6 +39,7 @@ export default function Home() {
 				{/* <FaceImage className={styles.face} /> */}
 				<ScrollCharacter value='Все еще сомневаетесь?' />
 				<Features />
+				<ServiceCenter />
 			</section>
 		</Transition>
 	)
