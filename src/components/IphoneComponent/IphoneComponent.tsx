@@ -1,13 +1,13 @@
 import styles from './IphoneComponent.module.sass'
 
-import { Suspense, useRef } from 'react'
+import { memo, useRef } from 'react'
 import { Canvas } from '@react-three/fiber'
 import { OrbitControls, PerspectiveCamera, Environment } from '@react-three/drei'
 import { useScroll, useTransform } from 'framer-motion'
 
 import IphoneModel from '../../gltf/Iphone-model'
 
-export default function IphoneComponent() {
+function IphoneComponent() {
 	const element = useRef<any>()
 	const { scrollYProgress } = useScroll({
 		target: element,
@@ -36,3 +36,5 @@ export default function IphoneComponent() {
 		</div>
 	)
 }
+
+export default memo(IphoneComponent)

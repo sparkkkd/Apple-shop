@@ -38,13 +38,8 @@ const ballVariants: Variants = {
 }
 
 const sloganContainerVariants: Variants = {
-	initial: {
-		y: 50,
-		opacity: 0,
-	},
+	initial: {},
 	animate: {
-		y: 0,
-		opacity: 1,
 		transition: {
 			delayChildren: 2.2,
 			staggerChildren: 0.2,

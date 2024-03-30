@@ -1,6 +1,6 @@
 import styles from './Home.module.sass'
 
-import { lazy, Suspense } from 'react'
+import { lazy, Suspense, useState } from 'react'
 
 import About from '../../components/About/About'
 import Features from '../../components/Features/Features'
@@ -15,14 +15,24 @@ import Intro from '../../components/Intro/Intro'
 import SpinnerLoading from '../../components/SpinnerLoading/SpinnerLoading'
 
 export default function Home() {
+	const [isPhoneSectionVisible, setIsPhoneSectionVisible] = useState<boolean>(false)
+
+	setTimeout(() => {
+		setIsPhoneSectionVisible(true)
+	}, 3200)
+
 	return (
 		<Transition>
 			<section className={styles.home}>
 				<Intro />
 				<About />
-				<Suspense fallback={<SpinnerLoading />}>
-					<IphoneComponent />
-				</Suspense>
+
+				{isPhoneSectionVisible && (
+					<Suspense fallback={<SpinnerLoading />}>
+						<IphoneComponent />
+					</Suspense>
+				)}
+
 				<Slogan />
 				<ParallaxIntroImages />
 				<FaceImage className={styles.face} />
