@@ -6,5 +6,5 @@ import svgr from 'vite-plugin-svgr'
 export default defineConfig({
 	plugins: [react(), svgr()],
 	assetsInclude: ['**/*.gltf'],
-	base: 'Apple-shop',
+	base: '/Apple-shop',
 })
