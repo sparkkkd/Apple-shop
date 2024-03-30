@@ -4,10 +4,7 @@ import './swiper-controls.sass'
 import { motion } from 'framer-motion'
 
 import SectionTitle from '../UI/SectionTitle/SectionTitle'
-import {
-	FeaturesEnumeration,
-	MFeaturesEnumeration,
-} from '../UI/FeaturesEnumeration/FeaturesEnumeration'
+import { MFeaturesEnumeration } from '../UI/FeaturesEnumeration/FeaturesEnumeration'
 
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay } from 'swiper/modules'

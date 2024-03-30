@@ -14,29 +14,31 @@ export default function Header({}: HeaderProps) {
 
 	return (
 		<header className={styles.header}>
-			<nav>
-				<ul className={styles.navlist}>
-					{NAV_ITEMS.map(({ id, text, href }) => (
-						<li className={styles.navitem} key={id}>
-							<NavItem text={text} href={href} />
-						</li>
-					))}
-				</ul>
-			</nav>
-
-			{name ? (
-				<UserHeader name={name} />
-			) : (
-				<nav className={styles.navauth}>
+			<div className={styles.container}>
+				<nav>
 					<ul className={styles.navlist}>
-						{NAV_AUTH_ITEMS.map(({ id, text, href }) => (
+						{NAV_ITEMS.map(({ id, text, href }) => (
 							<li className={styles.navitem} key={id}>
 								<NavItem text={text} href={href} />
 							</li>
 						))}
 					</ul>
 				</nav>
-			)}
+
+				{name ? (
+					<UserHeader name={name} />
+				) : (
+					<nav className={styles.navauth}>
+						<ul className={styles.navlist}>
+							{NAV_AUTH_ITEMS.map(({ id, text, href }) => (
+								<li className={styles.navitem} key={id}>
+									<NavItem text={text} href={href} />
+								</li>
+							))}
+						</ul>
+					</nav>
+				)}
+			</div>
 		</header>
 	)
 }
