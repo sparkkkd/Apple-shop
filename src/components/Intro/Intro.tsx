@@ -12,23 +12,6 @@ import {
 
 import AppleLogo from '../../images/apple-logo.svg?react'
 
-const titleVariants: Variants = {
-	initial: {
-		y: -50,
-		opacity: 0,
-	},
-
-	animate: {
-		y: 0,
-		opacity: 1,
-		transition: {
-			delay: 1,
-			ease: [0.79, 0.14, 0.15, 0.86],
-			duration: 1,
-		},
-	},
-}
-
 const sloganContainerVariants: Variants = {
 	initial: {},
 	animate: {
