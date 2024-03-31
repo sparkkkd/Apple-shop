@@ -20,6 +20,7 @@ import { useAppDispatch } from './hooks/redux'
 import { fetchCheckAuth } from './store/slices/authSlice'
 
 import BackgroundImage from './images/noise-bg.jpg'
+import Footer from './components/Footer/Footer'
 
 function App() {
 	const location = useLocation()
@@ -39,10 +40,7 @@ function App() {
 			></div>
 			<BurgerButton />
 			<BurgerMenu />
-
-			{/* <div className={styles.container}> */}
 			<Header />
-
 			<AnimatePresence mode='wait'>
 				<Routes location={location} key={location.pathname}>
 					<Route index element={<Home />} />
@@ -54,7 +52,7 @@ function App() {
 					<Route path='/thanks' element={<ThanksRegister />} />
 				</Routes>
 			</AnimatePresence>
-			{/* </div> */}
+			<Footer />
 		</>
 	)
 }
