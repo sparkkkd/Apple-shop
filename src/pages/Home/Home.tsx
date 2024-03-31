@@ -20,7 +20,7 @@ export default function Home() {
 
 	setTimeout(() => {
 		setIsPhoneSectionVisible(true)
-	}, 3200)
+	}, 4300)
 
 	return (
 		<Transition>
