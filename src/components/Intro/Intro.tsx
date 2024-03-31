@@ -3,6 +3,8 @@ import styles from './Intro.module.sass'
 
 import { Variants, motion, AnimatePresence, useTransform, useScroll } from 'framer-motion'
 
+import AppleLogo from '../../images/apple-logo.svg?react'
+
 const titleVariants: Variants = {
 	initial: {
 		y: -50,
@@ -81,12 +83,20 @@ export default function Intro() {
 						</motion.h1>
 					</motion.div>
 
-					<motion.div
+					{/* <motion.div
 						variants={ballVariants}
 						initial='initial'
 						animate='animate'
 						className={styles.ball}
-					/>
+					/> */}
+					<motion.div
+						className={styles.appleLogo}
+						variants={ballVariants}
+						initial='initial'
+						animate='animate'
+					>
+						<AppleLogo />
+					</motion.div>
 				</div>
 				<motion.div
 					key='sloganKey'
