@@ -82,13 +82,6 @@ export default function Intro() {
 							Community
 						</motion.h1>
 					</motion.div>
-
-					{/* <motion.div
-						variants={ballVariants}
-						initial='initial'
-						animate='animate'
-						className={styles.ball}
-					/> */}
 					<motion.div
 						className={styles.appleLogo}
 						variants={ballVariants}
