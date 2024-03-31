@@ -6,7 +6,6 @@ import About from '../../components/About/About'
 import Features from '../../components/Features/Features'
 import ScrollCharacter from '../../components/ScrollCharacter/ScrollCharacter'
 
-// import FaceImage from '../../images/face.svg?react'
 import Transition from '../../Transition/Transition'
 const IphoneComponent = lazy(() => import('../../components/IphoneComponent/IphoneComponent'))
 import Slogan from '../../components/Slogan/Slogan'
@@ -36,7 +35,6 @@ export default function Home() {
 
 				<Slogan />
 				<SloganDescribe />
-				{/* <FaceImage className={styles.face} /> */}
 				<ScrollCharacter value='Все еще сомневаетесь?' />
 				<Features />
 				<ServiceCenter />
