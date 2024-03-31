@@ -1,13 +1,11 @@
 import styles from './Footer.module.sass'
 
 import { ReactNode } from 'react'
-
-import { FOOTER_CONTACTS } from './contant'
 import { Link } from 'react-router-dom'
 
-interface FooterProps {}
+import { FOOTER_CONTACTS } from './constant'
 
-export default function Footer({}: FooterProps) {
+export default function Footer() {
 	return (
 		<footer className={styles.footer}>
 			<div className={styles.container}>
