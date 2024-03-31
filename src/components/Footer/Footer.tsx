@@ -5,9 +5,12 @@ import { Link } from 'react-router-dom'
 
 import { FOOTER_CONTACTS } from './constant'
 
+import bg from '../../images/bg.gif'
+
 export default function Footer() {
 	return (
 		<footer className={styles.footer}>
+			<div className={styles.footerImg} style={{ backgroundImage: `url(${bg})` }} />
 			<div className={styles.container}>
 				{FOOTER_CONTACTS.map(({ id, title, ico, href, tel }) => (
 					<ContactBlock key={id} title={title} ico={ico} href={href} tel={tel} />
