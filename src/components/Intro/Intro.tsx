@@ -29,23 +29,6 @@ const titleVariants: Variants = {
 	},
 }
 
-const ballVariants: Variants = {
-	initial: {
-		scale: 10,
-		opacity: 0,
-	},
-
-	animate: {
-		scale: 1,
-		opacity: 1,
-		transition: {
-			delay: 2,
-			ease: [0.22, 1, 0.36, 1],
-			duration: 1,
-		},
-	},
-}
-
 const sloganContainerVariants: Variants = {
 	initial: {},
 	animate: {
@@ -124,9 +107,7 @@ export default function Intro() {
 			<AnimatePresence>
 				<div key='logokey' className={styles.logo}>
 					<motion.div className={styles.title}>
-						<motion.h1 variants={titleVariants} ref={textScope}>
-							Community
-						</motion.h1>
+						<motion.h1 ref={textScope}>Community</motion.h1>
 					</motion.div>
 					<motion.div className={styles.appleLogo} ref={logoScope}>
 						<AppleLogo />
