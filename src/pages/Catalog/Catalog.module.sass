@@ -1,0 +1,21 @@
+.catalog
+  margin: 0 auto
+  padding: 40px 20px
+  max-width: 1240px
+
+.wrapper
+  margin: 0 auto
+  display: grid
+  grid-template-columns: repeat(3, minmax(280px, 400px))
+  grid-template-rows: auto-fill
+  justify-content: center
+  gap: 20px
+
+// Media
+@media screen and ( max-width: 1070px )
+  .wrapper
+    grid-template-columns: repeat(auto-fill, minmax(280px, 280px))
+
+@media screen and ( max-width: 619px )
+  .wrapper
+    grid-template-columns: 100%
