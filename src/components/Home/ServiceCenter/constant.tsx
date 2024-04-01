@@ -1,8 +1,8 @@
 import { v4 as uuidv4 } from 'uuid'
 
-import img1 from '../../images/slider/1.jpg'
-import img2 from '../../images/slider/2.jpg'
-import img3 from '../../images/slider/3.jpg'
+import img1 from '../../../images/slider/1.jpg'
+import img2 from '../../../images/slider/2.jpg'
+import img3 from '../../../images/slider/3.jpg'
 import { ReactNode } from 'react'
 
 interface ISlider {

@@ -2,7 +2,7 @@ import styles from './AuthForm.module.sass'
 
 import AuthInput from '../UI/AuthInput/AuthInput'
 import AuthButton from '../UI/AuthButton/AuthButton'
-import SpinnerLoading from '../SpinnerLoading/SpinnerLoading'
+import SpinnerLoading from '../UI/SpinnerLoading/SpinnerLoading'
 
 import { useEffect } from 'react'
 import { Navigate } from 'react-router-dom'

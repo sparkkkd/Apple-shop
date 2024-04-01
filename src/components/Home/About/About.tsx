@@ -1,12 +1,12 @@
 import styles from './About.module.sass'
 
-import SectionTitle from '../UI/SectionTitle/SectionTitle'
-import { MFeaturesEnumeration } from '../UI/FeaturesEnumeration/FeaturesEnumeration'
+import SectionTitle from '../../UI/SectionTitle/SectionTitle'
+import { MFeaturesEnumeration } from '../../UI/FeaturesEnumeration/FeaturesEnumeration'
 
 import { motion } from 'framer-motion'
 
 import { ABOUT_ITEMS } from './constant'
-import { fromBottomVariants } from '../../animations/animations'
+import { fromBottomVariants } from '../../../animations/animations'
 
 export default function About() {
 	return (

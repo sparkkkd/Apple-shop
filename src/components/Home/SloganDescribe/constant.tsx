@@ -1,9 +1,9 @@
-import { IParallaxImages } from '../../models/IParallaxImages'
+import { IParallaxImages } from '../../../models/IParallaxImages'
 
 import { v4 as uuidv4 } from 'uuid'
 
-import img1 from '../../images/intro-image1.jpg'
-import img2 from '../../images/intro-image2.jpg'
+import img1 from '../../../images/intro-image1.jpg'
+import img2 from '../../../images/intro-image2.jpg'
 
 export const PARALLAX_INTRO_IMAGES: Array<IParallaxImages> = [
 	{

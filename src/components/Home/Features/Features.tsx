@@ -4,9 +4,8 @@ import { Link } from 'react-router-dom'
 
 import { FEATURES_ITEMS } from './constant'
 
-import { useWindowSize } from '../../hooks/useWindowsSize'
-
-import ContainerImage from '../../images/phone-main.png'
+import { useWindowSize } from '../../../hooks/useWindowsSize'
+import ContainerImage from '../../../images/phone-main.png'
 
 export default function Features() {
 	const [width, _] = useWindowSize()

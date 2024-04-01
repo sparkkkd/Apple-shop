@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from 'uuid'
 
-import { IFeatures } from '../../models/IFeatures'
+import { IFeatures } from '../../../models/IFeatures'
 
 export const FEATURES_ITEMS: Array<IFeatures> = [
 	{

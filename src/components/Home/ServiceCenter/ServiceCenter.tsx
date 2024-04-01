@@ -3,14 +3,14 @@ import './swiper-controls.sass'
 
 import { motion } from 'framer-motion'
 
-import SectionTitle from '../UI/SectionTitle/SectionTitle'
-import { MFeaturesEnumeration } from '../UI/FeaturesEnumeration/FeaturesEnumeration'
+import SectionTitle from '../../UI/SectionTitle/SectionTitle'
+import { MFeaturesEnumeration } from '../../UI/FeaturesEnumeration/FeaturesEnumeration'
 
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay } from 'swiper/modules'
 import 'swiper/css'
 
-import { fromBottomVariants } from '../../animations/animations'
+import { fromBottomVariants } from '../../../animations/animations'
 import { SLIDER_ITEMS, FEATURES_TITLE, SERVICE_ITEMS } from './constant'
 
 export default function ServiceCenter() {

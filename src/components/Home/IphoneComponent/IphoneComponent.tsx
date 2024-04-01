@@ -5,7 +5,7 @@ import { Canvas } from '@react-three/fiber'
 import { OrbitControls, PerspectiveCamera, Environment } from '@react-three/drei'
 import { useScroll, useTransform } from 'framer-motion'
 
-import IphoneModel from '../../gltf/Iphone-model'
+import IphoneModel from '../../../gltf/Iphone-model'
 
 function IphoneComponent() {
 	const element = useRef<any>()

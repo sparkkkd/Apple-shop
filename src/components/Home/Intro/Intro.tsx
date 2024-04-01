@@ -10,7 +10,7 @@ import {
 	useAnimate,
 } from 'framer-motion'
 
-import AppleLogo from '../../images/apple-logo.svg?react'
+import AppleLogo from '../../../images/apple-logo.svg?react'
 
 const sloganContainerVariants: Variants = {
 	initial: {},

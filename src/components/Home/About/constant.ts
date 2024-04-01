@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from 'uuid'
 
-import { IAbout } from '../../models/IAbout'
+import { IAbout } from '../../../models/IAbout'
 
 export const ABOUT_ITEMS: Array<IAbout> = [
 	{

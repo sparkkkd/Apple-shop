@@ -2,17 +2,17 @@ import styles from './Home.module.sass'
 
 import { lazy, Suspense, useState } from 'react'
 
-import About from '../../components/About/About'
-import Features from '../../components/Features/Features'
+import About from '../../components/Home/About/About'
+import Features from '../../components/Home/Features/Features'
 import ScrollCharacter from '../../components/ScrollCharacter/ScrollCharacter'
 
 import Transition from '../../Transition/Transition'
-const IphoneComponent = lazy(() => import('../../components/IphoneComponent/IphoneComponent'))
-import Slogan from '../../components/Slogan/Slogan'
-import SloganDescribe from '../../components/SloganDescribe/SloganDescribe'
-import Intro from '../../components/Intro/Intro'
-import SpinnerLoading from '../../components/SpinnerLoading/SpinnerLoading'
-import ServiceCenter from '../../components/ServiceCenter/ServiceCenter'
+const IphoneComponent = lazy(() => import('../../components/Home/IphoneComponent/IphoneComponent'))
+import Slogan from '../../components/Home/Slogan/Slogan'
+import SloganDescribe from '../../components/Home/SloganDescribe/SloganDescribe'
+import Intro from '../../components/Home/Intro/Intro'
+import SpinnerLoading from '../../components/UI/SpinnerLoading/SpinnerLoading'
+import ServiceCenter from '../../components/Home/ServiceCenter/ServiceCenter'
 
 export default function Home() {
 	const [isPhoneSectionVisible, setIsPhoneSectionVisible] = useState<boolean>(false)
