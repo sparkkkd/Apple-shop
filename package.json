@@ -19,6 +19,7 @@
     "@reduxjs/toolkit": "^2.2.2",
     "@types/axios": "^0.14.0",
     "@types/react-redux": "^7.1.33",
+    "antd": "^5.16.0",
     "axios": "^1.6.8",
     "framer-motion": "^11.0.18",
     "framer-motion-3d": "^11.0.23",

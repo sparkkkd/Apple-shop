@@ -11,16 +11,17 @@ import SignIn from './pages/SignIn/SignIn'
 import Cart from './pages/Cart/Cart'
 import Contacts from './pages/Contacts/Contacts'
 import ThanksRegister from './pages/ThanksRegister/ThanksRegister'
+import Admin from './pages/Admin/Admin'
 
 import Header from './components/Header/Header'
 import BurgerMenu from './components/BurgerMenu/BurgerMenu'
 import BurgerButton from './components/BurgerButton/BurgerButton'
+import Footer from './components/Footer/Footer'
 
 import { useAppDispatch } from './hooks/redux'
 import { fetchCheckAuth } from './store/slices/authSlice'
 
 import BackgroundImage from './images/noise-bg.jpg'
-import Footer from './components/Footer/Footer'
 
 function App() {
 	const location = useLocation()
@@ -50,6 +51,7 @@ function App() {
 					<Route path='/cart' element={<Cart />} />
 					<Route path='/contacts' element={<Contacts />} />
 					<Route path='/thanks' element={<ThanksRegister />} />
+					<Route path='/admin' element={<Admin />} />
 				</Routes>
 			</AnimatePresence>
 			<Footer />
