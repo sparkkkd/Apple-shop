@@ -22,7 +22,7 @@ export default function Filter({}: FilterProps) {
 
 	const debouncedSearch = useDebounce(search, 500)
 
-	const { price, date, search: ss } = useAppSelector((state) => state.productsSlice)
+	const { price, date } = useAppSelector((state) => state.productsSlice)
 	const dispatch = useAppDispatch()
 
 	const { data: categories } = productsApi.useFetchAllCategoriesQuery(null)
@@ -30,7 +30,6 @@ export default function Filter({}: FilterProps) {
 	useEffect(() => {
 		if (debouncedSearch) {
 			handleSearch()
-			console.log(ss)
 		}
 	}, [debouncedSearch])
 

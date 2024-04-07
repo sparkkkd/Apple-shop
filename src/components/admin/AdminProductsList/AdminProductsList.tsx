@@ -1,20 +1,32 @@
 import styles from './AdminProductsList.module.sass'
 
+import { useState } from 'react'
+
 import { ICategory } from '../../../models/ICategory'
 import SectionTitle from '../../UI/SectionTitle/SectionTitle'
 import Button from '../../UI/Button/Button'
 
+import BackButton from '../../UI/BackButton/BackButton'
+import Filter from '../../UI/Filter/Filter'
+import PaginationComponent from '../../UI/PaginationComponent/PaginationComponent'
+import SpinnerLoading from '../../UI/SpinnerLoading/SpinnerLoading'
+
 import { useAppDispatch } from '../../../hooks/redux'
 import { productsApi } from '../../../store/slices/productsApi'
 import { togglePanel } from '../../../store/slices/adminSlice'
-import BackButton from '../../UI/BackButton/BackButton'
-import Filter from '../../UI/Filter/Filter'
 
 interface AdminProductsListProps {}
 
 export default function AdminProductsList({}: AdminProductsListProps) {
-	const { data } = productsApi.useFetchAllProductsQuery('')
+	const [page, setPage] = useState<number>(1)
+	const { data, isLoading } = productsApi.useFetchAllProductsQuery(page)
+
 	const dispatch = useAppDispatch()
+
+	function onChange(page: number) {
+		setPage(page)
+		window.scrollTo(0, 200)
+	}
 
 	return (
 		<section className={styles.products}>
@@ -24,8 +36,8 @@ export default function AdminProductsList({}: AdminProductsListProps) {
 			<Filter />
 
 			<div className={styles.wrapper}>
-				{data &&
-					data.map(({ _id, name, preview, color, price, category }: ProductProps) => (
+				{!isLoading ? (
+					data.products.map(({ _id, name, preview, color, price, category }: ProductProps) => (
 						<Product
 							key={_id}
 							preview={preview}
@@ -34,8 +46,19 @@ export default function AdminProductsList({}: AdminProductsListProps) {
 							color={color}
 							category={category}
 						/>
-					))}
+					))
+				) : (
+					<SpinnerLoading />
+				)}
 			</div>
+			{data && (
+				<PaginationComponent
+					currentPage={page}
+					total={data.count}
+					onChange={onChange}
+					isLoading={isLoading}
+				/>
+			)}
 		</section>
 	)
 }
